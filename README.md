@@ -1,5 +1,7 @@
 # Dotfiles
 
+What I use in my daily work, updated every so often. Use at your own risk.
+
 ## VIM
 
 `cd && ln -s ./dotfiles/.vimrc .vimrc`
