@@ -8,7 +8,7 @@ What I use in my daily work, updated every so often. Use at your own risk.
 
 ## ZSH
 
-`cd && ln -s ./dotfiles/.zshrc .zshrtc
+`cd && ln -s ./dotfiles/.zshrc .zshrtc`
 
 ## TMUX
 
