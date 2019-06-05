@@ -9,11 +9,14 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" use :PlugInstall to install plugins
+
 Plug 'micha/vim-colors-solarized'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
+Plug 'benmills/vimux'
 
 call plug#end()
 
