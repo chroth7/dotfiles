@@ -1,9 +1,6 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+# Startup perf: https://blog.askesis.pl/post/2017/04/how-to-debug-zsh-startup-time.html
+
+# zmodload zsh/zprof
 
 export ZSH=$HOME/.oh-my-zsh
 export MYZSH=$HOME/.zsh
@@ -27,12 +24,10 @@ plugins=(git colored-man colorize github vi-mode brew osx zsh-syntax-highlightin
 source $ZSH/oh-my-zsh.sh
 source $MYZSH/tmux 
 
-export NVM_DIR="/Users/christianroth/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$(brew --prefix curl)/bin:$HOME/.jenv/bin:$HOME/miniconda3/bin:$PATH"
-eval "$(jenv init -)"
+# Too slow...
+# eval "$(jenv init -)"
 
 export PATH=$PATH:~/.local/bin
 export PATH="$HOME/.yarn/bin:$PATH"
@@ -91,3 +86,5 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs vi_mode)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
 
 bindkey -v
+
+# zprof

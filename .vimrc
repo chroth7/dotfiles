@@ -17,20 +17,32 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'benmills/vimux'
+Plug 'scrooloose/nerdtree'
 
 call plug#end()
 
 " BASICS
+let mapleader=" "
 syntax enable
 set background=dark
 colorscheme solarized
 
-:set number relativenumber
-:set nu rnu
-:autocmd InsertEnter,InsertLeave * set cul!
+set number relativenumber
+set nu rnu
+set hlsearch
+augroup highlight
+  autocmd!
+  autocmd InsertEnter,InsertLeave * set cul!
+augroup END
 
-let mapleader=" "
 nnoremap <leader>hw iHello World<esc>
+nnoremap <leader>hoi iHoi World<esc>
+
+" common
+nnoremap <leader>ww :w<CR>
+" get out
+nnoremap <leader>qqq :q!<CR>
+nnoremap <leader>src :source $MYVIMRC<CR>
 
 " FIND
 set path +=**
