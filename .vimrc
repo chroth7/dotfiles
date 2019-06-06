@@ -20,9 +20,29 @@ Plug 'benmills/vimux'
 
 call plug#end()
 
+" BASICS
 syntax enable
 set background=dark
 colorscheme solarized
 
 :set number relativenumber
 :set nu rnu
+:autocmd InsertEnter,InsertLeave * set cul!
+
+let mapleader=" "
+nnoremap <leader>hw iHello World<esc>
+
+" FIND
+set path +=**
+set wildmenu
+
+" VIMUX
+let g:VimuxHeight = "15"
+let g:VimuxUseNearest = 0
+
+map <leader>cp :VimuxPromptCommand<CR>
+map <leader>cc :VimuxCloseRunner<CR>
+
+" SNIPPETS
+nnoremap <leader>aio :-1read $HOME/.vim/snippets/aio.ts<CR>
+

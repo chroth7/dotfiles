@@ -15,3 +15,7 @@ What I use in my daily work, updated every so often. Use at your own risk.
 ## TMUX
 
 `cd && ln -s ./dotfiles/.tmux.conf.local .tmux.conf.local`
+
+## SNIPPETS
+
+`cd && ln -s ./dotfiles/snippets ./.vim/snippets`
