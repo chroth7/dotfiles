@@ -9,12 +9,13 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" use :PlugInstall to install plugins
+" Note: use :PlugInstall to install plugins
 
 Plug 'micha/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
@@ -51,6 +52,9 @@ nnoremap <leader>src :source $MYVIMRC<CR>
 " PLUGIN RELATED
 " Airline
 let g:airline_solarized_bg='dark'
+
+" vimgutter (increase update speed)
+set updatetime=100
 
 " Incsearch
 map /  <Plug>(incsearch-forward)
