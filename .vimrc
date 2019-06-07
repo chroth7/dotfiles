@@ -12,12 +12,16 @@ call plug#begin('~/.vim/plugged')
 " use :PlugInstall to install plugins
 
 Plug 'micha/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'benmills/vimux'
 Plug 'scrooloose/nerdtree'
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
 
 call plug#end()
 
@@ -43,6 +47,27 @@ nnoremap <leader>ww :w<CR>
 " get out
 nnoremap <leader>qqq :q!<CR>
 nnoremap <leader>src :source $MYVIMRC<CR>
+
+" PLUGIN RELATED
+" Airline
+let g:airline_solarized_bg='dark'
+
+" Incsearch
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+map z/ <Plug>(incsearch-fuzzy-/)
+map z? <Plug>(incsearch-fuzzy-?)
+map zg/ <Plug>(incsearch-fuzzy-stay)
+
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 
 " FIND
 set path +=**
