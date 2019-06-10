@@ -1,3 +1,4 @@
+" The usual ------ {{{
 set nocompatible              " be iMproved, required
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -5,7 +6,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+" }}} 
 
+" Plugins ------ {{{
 call plug#begin('~/.vim/plugged')
 
 " Note: use :PlugInstall to install plugins
@@ -27,12 +30,20 @@ Plug 'leafgarland/typescript-vim'
 Plug 'quramy/tsuquyomi'
 
 call plug#end()
+" }}} 
 
-" BASICS
+" BASICS ------ {{{
 let mapleader=" "
 syntax enable
 set background=dark
 colorscheme solarized
+
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim nnoremap <leader>fs O" ABC ------ {{{<esc>FAcw
+  autocmd FileType vim nnoremap <leader>fe o" }}} 
+  autocmd FileType vim setlocal foldmethod=marker 
+augroup END
 
 set nu rnu
 set hlsearch
@@ -43,8 +54,9 @@ augroup END
 
 nnoremap <leader>hw iHello World<esc>
 nnoremap <leader>hoi iHoi World<esc>
+" }}} 
 
-" Annoy me
+" ANNOY ME ------ {{{
 nmap <Down> <nop>
 nmap <Up> <nop>
 nmap <Left> <nop>
@@ -53,15 +65,18 @@ imap <Down> <nop>
 imap <Up> <nop>
 imap <Left> <nop>
 imap <Right> <nop>
+" }}} 
 
-" common
+" COMMON ------ {{{
 nnoremap <leader>ww :w<CR>
 inoremap jk <esc>
 " get out
 nnoremap <leader>qqq :q!<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
+" }}} 
 
+" NICE EXAMPLES ------ {{{
 " nice examples
 " remap operators
 " Remember: if either we leave a visual selection, then it will work on that
@@ -73,8 +88,9 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 :onoremap il( :<c-u>normal! F(vi(<cr>
 " MD: change heading: (shown for special chars and execute)
 :onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
+" }}} 
 
-" PLUGIN RELATED
+" Plugin Related ------ {{{
 " Prettier
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
@@ -112,11 +128,17 @@ let g:VimuxUseNearest = 0
 
 nnoremap <leader>cp :VimuxPromptCommand<CR>
 nnoremap <leader>cc :VimuxCloseRunner<CR>
+" }}} 
 
-" Abbreviations
+" Abbreviations ------ {{{
 abbrev @@@ christian@ambrite.ch
+" }}} 
 
-" CUSTOM MAPPINGS
+" Custom Mappings ------ {{{
+" nothing yet
+" }}} 
 
-" SNIPPETS
+" SNIPPETS ------ {{{
 nnoremap <leader>aio :-1read $HOME/.vim/snippets/aio.ts<CR>
+" }}} 
+
