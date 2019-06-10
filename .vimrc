@@ -1,5 +1,4 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -23,6 +22,9 @@ Plug 'benmills/vimux'
 Plug 'scrooloose/nerdtree'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'leafgarland/typescript-vim'
+Plug 'quramy/tsuquyomi'
 
 call plug#end()
 
@@ -32,7 +34,6 @@ syntax enable
 set background=dark
 colorscheme solarized
 
-set number relativenumber
 set nu rnu
 set hlsearch
 augroup highlight
@@ -43,13 +44,41 @@ augroup END
 nnoremap <leader>hw iHello World<esc>
 nnoremap <leader>hoi iHoi World<esc>
 
+" Annoy me
+nmap <Down> <nop>
+nmap <Up> <nop>
+nmap <Left> <nop>
+nmap <Right> <nop>
+imap <Down> <nop>
+imap <Up> <nop>
+imap <Left> <nop>
+imap <Right> <nop>
+
 " common
 nnoremap <leader>ww :w<CR>
+inoremap jk <esc>
 " get out
 nnoremap <leader>qqq :q!<CR>
-nnoremap <leader>src :source $MYVIMRC<CR>
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
+" nice examples
+" remap operators
+" Remember: if either we leave a visual selection, then it will work on that
+" -- or it will work on the start and end positions, VIM script the hard way,
+"  15.3
+" operator for: inside next parentheses
+:onoremap in( :<c-u>normal! f(vi(<cr>
+" and inside last (prev) parentheses
+:onoremap il( :<c-u>normal! F(vi(<cr>
+" MD: change heading: (shown for special chars and execute)
+:onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
 
 " PLUGIN RELATED
+" Prettier
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+
 " Airline
 let g:airline_solarized_bg='dark'
 
@@ -81,9 +110,13 @@ set wildmenu
 let g:VimuxHeight = "15"
 let g:VimuxUseNearest = 0
 
-map <leader>cp :VimuxPromptCommand<CR>
-map <leader>cc :VimuxCloseRunner<CR>
+nnoremap <leader>cp :VimuxPromptCommand<CR>
+nnoremap <leader>cc :VimuxCloseRunner<CR>
+
+" Abbreviations
+abbrev @@@ christian@ambrite.ch
+
+" CUSTOM MAPPINGS
 
 " SNIPPETS
 nnoremap <leader>aio :-1read $HOME/.vim/snippets/aio.ts<CR>
-
