@@ -17,6 +17,7 @@ Plug 'micha/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
@@ -155,6 +156,11 @@ let g:airline#extensions#tabline#enabled = 1
 
 " vimgutter (increase update speed)
 set updatetime=100
+
+" CtrlP
+nnoremap <Leader>fb :CtrlPBuffer<CR>
+nnoremap <Leader>ff :CtrlP<CR>
+nnoremap <Leader>fa :CtrlPMixed<CR>
 
 " fugitive
 nnoremap <leader>gs :Gstatus<cr>
