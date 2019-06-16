@@ -73,6 +73,11 @@ nnoremap / /\v
 nnoremap ? ?\v
 cnoremap s/ s/\v
 
+" Buffers
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+nnoremap <C-X> :bdelete<CR>
+
 nnoremap <leader>hw iHello World<esc>
 nnoremap <leader>hoi iHoi World<esc>
 " }}}
@@ -146,6 +151,7 @@ map <leader>nt :NERDTreeToggle<CR>
 
 " Airline
 let g:airline_solarized_bg='dark'
+let g:airline#extensions#tabline#enabled = 1
 
 " vimgutter (increase update speed)
 set updatetime=100
