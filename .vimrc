@@ -17,26 +17,32 @@ Plug 'micha/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'benmills/vimux'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'leafgarland/typescript-vim'
 Plug 'quramy/tsuquyomi'
+Plug 'easymotion/vim-easymotion'
+Plug 'chrisbra/NrrwRgn'
 
 call plug#end()
 " }}} 
 
 " BASICS ------ {{{
 let mapleader=" "
+let dotfolder="~/dotfiles/"
 syntax enable
 set background=dark
 colorscheme solarized
+set expandtab tabstop=2 shiftwidth=2
 
 augroup filetype_vim
   autocmd!
@@ -45,12 +51,27 @@ augroup filetype_vim
   autocmd FileType vim setlocal foldmethod=marker 
 augroup END
 
+augroup filetype_typescript
+  autocmd!
+  autocmd FileType typescript setlocal foldmethod=indent
+augroup END
+
+augroup preview
+  autocmd!
+  autocmd CompleteDone * pclose
+augroup END
+
 set nu rnu
 set hlsearch
 augroup highlight
   autocmd!
   autocmd InsertEnter,InsertLeave * set cul!
 augroup END
+
+" Use very magic by default
+nnoremap / /\v 
+nnoremap ? ?\v
+cnoremap s/ s/\v
 
 nnoremap <leader>hw iHello World<esc>
 nnoremap <leader>hoi iHoi World<esc>
@@ -61,10 +82,11 @@ nmap <Down> <nop>
 nmap <Up> <nop>
 nmap <Left> <nop>
 nmap <Right> <nop>
-imap <Down> <nop>
-imap <Up> <nop>
-imap <Left> <nop>
-imap <Right> <nop>
+" The following are needed for autocomplete
+" imap <Down> <nop>
+" imap <Up> <nop>
+" imap <Left> <nop>
+" imap <Right> <nop>
 " }}} 
 
 " COMMON ------ {{{
@@ -83,11 +105,35 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " -- or it will work on the start and end positions, VIM script the hard way,
 "  15.3
 " operator for: inside next parentheses
-:onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap in( :<c-u>normal! f(vi(<cr>
 " and inside last (prev) parentheses
-:onoremap il( :<c-u>normal! F(vi(<cr>
+onoremap il( :<c-u>normal! F(vi(<cr>
 " MD: change heading: (shown for special chars and execute)
-:onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
+onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
+
+function! SayHi(name)
+  echom "Hello " . a:name
+endfunction
+
+function! Varg(...)
+  echom a:0
+  echom a:1
+  echo a:000
+endfunction
+
+function! DeleteFirstReturn()
+  execute "normal! gg/return\<cr>dd"
+endfunction
+nnoremap <leader>dfr :call DeleteFirstReturn()<cr>
+
+function! TerminateLineWithSemi()
+  execute "normal! mqA;\<esc>`q"
+endfunction
+nnoremap <leader>ts :call TerminateLineWithSemi()<cr>
+
+" Grep example Part 1
+" nnoremap <leader>g :execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
+
 " }}} 
 
 " Plugin Related ------ {{{
@@ -95,11 +141,17 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
 
+" Nerdtree
+map <leader>nt :NERDTreeToggle<CR>
+
 " Airline
 let g:airline_solarized_bg='dark'
 
 " vimgutter (increase update speed)
 set updatetime=100
+
+" fugitive
+nnoremap <leader>gs :Gstatus<cr>
 
 " Incsearch
 map /  <Plug>(incsearch-forward)
@@ -122,12 +174,16 @@ map g# <Plug>(incsearch-nohl-g#)
 set path +=**
 set wildmenu
 
+" TYPESCEIPT
+let g:tsuquyomi_completion_detail = 1
+
 " VIMUX
 let g:VimuxHeight = "15"
 let g:VimuxUseNearest = 0
 
 nnoremap <leader>cp :VimuxPromptCommand<CR>
 nnoremap <leader>cc :VimuxCloseRunner<CR>
+
 " }}} 
 
 " Abbreviations ------ {{{
@@ -135,7 +191,14 @@ abbrev @@@ christian@ambrite.ch
 " }}} 
 
 " Custom Mappings ------ {{{
-" nothing yet
+
+" NORMAL MODE
+nnoremap <leader>win <c-w>
+nnoremap <leader>el /\v^$\s*<cr>:nohl<cr>
+
+" INSERT MODE
+inoremap cc <c-x><c-o>
+
 " }}} 
 
 " SNIPPETS ------ {{{
