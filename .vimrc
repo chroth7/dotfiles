@@ -6,7 +6,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-" }}} 
+" }}}
 
 " Plugins ------ {{{
 call plug#begin('~/.vim/plugged')
@@ -34,7 +34,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'chrisbra/NrrwRgn'
 
 call plug#end()
-" }}} 
+" }}}
 
 " BASICS ------ {{{
 let mapleader=" "
@@ -47,8 +47,8 @@ set expandtab tabstop=2 shiftwidth=2
 augroup filetype_vim
   autocmd!
   autocmd FileType vim nnoremap <leader>fs O" ABC ------ {{{<esc>FAcw
-  autocmd FileType vim nnoremap <leader>fe o" }}} 
-  autocmd FileType vim setlocal foldmethod=marker 
+  autocmd FileType vim nnoremap <leader>fe o" }}}
+  autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
 augroup filetype_typescript
@@ -69,13 +69,13 @@ augroup highlight
 augroup END
 
 " Use very magic by default
-nnoremap / /\v 
+nnoremap / /\v
 nnoremap ? ?\v
 cnoremap s/ s/\v
 
 nnoremap <leader>hw iHello World<esc>
 nnoremap <leader>hoi iHoi World<esc>
-" }}} 
+" }}}
 
 " ANNOY ME ------ {{{
 nmap <Down> <nop>
@@ -87,7 +87,7 @@ nmap <Right> <nop>
 " imap <Up> <nop>
 " imap <Left> <nop>
 " imap <Right> <nop>
-" }}} 
+" }}}
 
 " COMMON ------ {{{
 nnoremap <leader>ww :w<CR>
@@ -96,7 +96,7 @@ inoremap jk <esc>
 nnoremap <leader>qqq :q!<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
-" }}} 
+" }}}
 
 " NICE EXAMPLES ------ {{{
 " nice examples
@@ -134,7 +134,7 @@ nnoremap <leader>ts :call TerminateLineWithSemi()<cr>
 " Grep example Part 1
 " nnoremap <leader>g :execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
 
-" }}} 
+" }}}
 
 " Plugin Related ------ {{{
 " Prettier
@@ -152,6 +152,8 @@ set updatetime=100
 
 " fugitive
 nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gp :Gpush<cr>
 
 " Incsearch
 map /  <Plug>(incsearch-forward)
@@ -184,11 +186,11 @@ let g:VimuxUseNearest = 0
 nnoremap <leader>cp :VimuxPromptCommand<CR>
 nnoremap <leader>cc :VimuxCloseRunner<CR>
 
-" }}} 
+" }}}
 
 " Abbreviations ------ {{{
 abbrev @@@ christian@ambrite.ch
-" }}} 
+" }}}
 
 " Custom Mappings ------ {{{
 
@@ -199,9 +201,9 @@ nnoremap <leader>el /\v^$\s*<cr>:nohl<cr>
 " INSERT MODE
 inoremap cc <c-x><c-o>
 
-" }}} 
+" }}}
 
 " SNIPPETS ------ {{{
 nnoremap <leader>aio :-1read $HOME/.vim/snippets/aio.ts<CR>
-" }}} 
+" }}}
 
