@@ -60,6 +60,7 @@ alias dotv="vim ~/.vimrc"
 alias srcv="source ~/.vimrc"
 alias dotz="vim ~/.zshrc"
 alias srcz="source ~/.zshrc"
+alias v="vim"
 
 # MY GIT
 alias gpd="git checkout develop && git pull"

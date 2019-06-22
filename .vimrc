@@ -33,6 +33,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'quramy/tsuquyomi'
 Plug 'easymotion/vim-easymotion'
 Plug 'chrisbra/NrrwRgn'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 " }}}
@@ -150,6 +152,9 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 " Nerdtree
 map <leader>nt :NERDTreeToggle<CR>
 
+" Tagbar
+nnoremap <leader>tb :TagbarToggle<CR>
+
 " Airline
 let g:airline_solarized_bg='dark'
 let g:airline#extensions#tabline#enabled = 1
@@ -161,6 +166,7 @@ set updatetime=100
 nnoremap <Leader>fb :CtrlPBuffer<CR>
 nnoremap <Leader>ff :CtrlP<CR>
 nnoremap <Leader>fa :CtrlPMixed<CR>
+nnoremap <Leader>ft :CtrlPTag<CR>
 
 " fugitive
 nnoremap <leader>gs :Gstatus<cr>
