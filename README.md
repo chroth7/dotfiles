@@ -16,6 +16,10 @@ What I use in my daily work, updated every so often. Use at your own risk.
 
 `cd && ln -s ./dotfiles/.tmux.conf.local .tmux.conf.local`
 
+## ctags
+
+`cd && ln -s ./dotfiles/.ctags .ctags
+
 ## SNIPPETS
 
 `cd && ln -s ./dotfiles/snippets ./.vim/snippets`
