@@ -35,6 +35,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'chrisbra/NrrwRgn'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
+Plug 'ervandew/supertab'
 
 call plug#end()
 " }}}
@@ -57,6 +58,7 @@ augroup END
 augroup filetype_typescript
   autocmd!
   autocmd FileType typescript setlocal foldmethod=indent
+  autocmd FileType typescript nnoremap <leader>im :TsuImport<CR>
 augroup END
 
 augroup preview
@@ -147,7 +149,10 @@ nnoremap <leader>ts :call TerminateLineWithSemi()<cr>
 " Plugin Related ------ {{{
 " Prettier
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+augroup prettier 
+  autocmd!
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+augroup END
 
 " Nerdtree
 map <leader>nt :NERDTreeToggle<CR>
@@ -195,7 +200,8 @@ set path +=**
 set wildmenu
 
 " TYPESCEIPT
-let g:tsuquyomi_completion_detail = 1
+" this makes it slow...
+" let g:tsuquyomi_completion_detail = 1
 
 " VIMUX
 let g:VimuxHeight = "15"
