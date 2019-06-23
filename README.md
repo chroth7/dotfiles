@@ -30,3 +30,10 @@ We have some scripts that we want to add, and to automate this we simply link it
 If you have other plugins in that folder, you might want to apply a different strategy.
 
 `cd && ln -s ./dotfiles/plugin ./.vim/plugin`
+
+## iTerm
+
+Some ideas:
+
+- Apperance > Dimming: I like to have dimming enabled if window is not active
+- Profiles > Colors > Smart Box Cursor Color: Easier to find the cursor (alternatively: use a signal color)
