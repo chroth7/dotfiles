@@ -163,6 +163,7 @@ nnoremap <leader>tb :TagbarToggle<CR>
 " Airline
 let g:airline_solarized_bg='dark'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " vimgutter (increase update speed)
 set updatetime=100
