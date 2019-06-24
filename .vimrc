@@ -13,6 +13,7 @@ call plug#begin('~/.vim/plugged')
 
 " Note: use :PlugInstall to install plugins
 
+Plug 'w0rp/ale'
 Plug 'micha/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -156,6 +157,9 @@ augroup END
 
 " Nerdtree
 map <leader>nt :NERDTreeToggle<CR>
+
+" ALE
+let g:airline#extensions#ale#enabled = 1
 
 " Tagbar
 nnoremap <leader>tb :TagbarToggle<CR>
