@@ -61,6 +61,7 @@ alias srcv="source ~/.vimrc"
 alias dotz="vim ~/.zshrc"
 alias srcz="source ~/.zshrc"
 alias v="vim"
+alias glcoud="gcloud"
 
 # MY GIT
 alias gpd="git checkout develop && git pull"
