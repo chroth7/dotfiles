@@ -71,6 +71,10 @@ alias gpm="git checkout master && git pull"
 alias play="spotify play"
 alias pause="spotify pause"
 
+# cbt
+alias cbttlabs='echo "project = tlabs-123\ninstance = tlabs-bigtable" >! ~/.cbtrc'
+alias cbtranger='echo "project = t2-prod\ninstance = ranger-bigtable" >! ~/.cbtrc'
+
 # Global alias, expanded anywhere >> Use: ls -l G foo
 alias -g G='| grep -i'
 
