@@ -62,6 +62,8 @@ alias dotz="vim ~/.zshrc"
 alias srcz="source ~/.zshrc"
 alias v="vim"
 alias glcoud="gcloud"
+alias kx="kubectx"
+alias kn="kubens"
 
 # MY GIT
 alias gpd="git checkout develop && git pull"
