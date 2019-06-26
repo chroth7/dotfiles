@@ -19,7 +19,7 @@ fi
 # ZSH_THEME=agnoster
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-plugins=(git colored-man colorize github vi-mode brew osx zsh-syntax-highlighting kubectl)
+plugins=(git colorize github vi-mode brew osx zsh-syntax-highlighting kubectl kube-ps1)
 
 source $ZSH/oh-my-zsh.sh
 source $MYZSH/tmux 
@@ -88,8 +88,13 @@ function clip() { cat "$1" | pbcopy }
 
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs vi_mode)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs vi_mode)
+POWERLEVEL9K_CUSTOM_KUBE="kube_ps1"
+POWERLEVEL9K_CUSTOM_KUBE_BACKGROUND="blue"
+POWERLEVEL9K_CUSTOM_KUBE_FOREGROUND="yellow"
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
+
+KUBE_PS1_SEPARATOR=''
 
 bindkey -v
 
