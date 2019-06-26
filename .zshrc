@@ -88,13 +88,16 @@ function clip() { cat "$1" | pbcopy }
 
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs vi_mode)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_kube dir vcs vi_mode)
 POWERLEVEL9K_CUSTOM_KUBE="kube_ps1"
-POWERLEVEL9K_CUSTOM_KUBE_BACKGROUND="blue"
+POWERLEVEL9K_CUSTOM_KUBE_BACKGROUND="black"
 POWERLEVEL9K_CUSTOM_KUBE_FOREGROUND="yellow"
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
 
-KUBE_PS1_SEPARATOR=''
+# KUBE_PS1_SEPARATOR=''
+KUBE_PS1_NS_COLOR=red
+KUBE_PS1_CTX_COLOR=cyan
+kubeoff
 
 bindkey -v
 
