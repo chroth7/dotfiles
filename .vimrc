@@ -48,6 +48,8 @@ syntax enable
 set background=dark
 colorscheme solarized
 set expandtab tabstop=2 shiftwidth=2
+set splitbelow
+set splitright
 
 augroup filetype_vim
   autocmd!
@@ -60,6 +62,7 @@ augroup filetype_typescript
   autocmd!
   autocmd FileType typescript setlocal foldmethod=indent
   autocmd FileType typescript nnoremap <leader>im :TsuImport<CR>
+  autocmd FileType typescript nnoremap <leader>lg iconsole.log()<esc>i
 augroup END
 
 augroup preview
