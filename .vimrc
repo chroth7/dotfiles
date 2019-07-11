@@ -162,10 +162,12 @@ augroup prettier
 augroup END
 
 " Nerdtree
-map <leader>nt :NERDTreeToggle<CR>
+map <leader>n :NERDTreeToggle<CR>
+let NERDTreeShowHidden = 1
 
 " ALE
 let g:airline#extensions#ale#enabled = 1
+let g:ale_linters = { 'typescript': ['tslint'] }
 
 " Tagbar
 nnoremap <leader>tb :TagbarToggle<CR>
@@ -213,7 +215,7 @@ set wildmenu
 " TYPESCEIPT
 " this makes it slow...
 " let g:tsuquyomi_completion_detail = 1
-let g:tsuquyomi_disable_quickfix = 1
+let g:tsuquyomi_disable_quickfix = 0
 
 " VIMUX
 let g:VimuxHeight = "15"
