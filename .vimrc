@@ -48,6 +48,8 @@ syntax enable
 set background=dark
 colorscheme solarized
 set expandtab tabstop=2 shiftwidth=2
+set splitbelow
+set splitright
 
 augroup filetype_vim
   autocmd!
@@ -60,6 +62,7 @@ augroup filetype_typescript
   autocmd!
   autocmd FileType typescript setlocal foldmethod=indent
   autocmd FileType typescript nnoremap <leader>im :TsuImport<CR>
+  autocmd FileType typescript nnoremap <leader>lg iconsole.log()<esc>i
 augroup END
 
 augroup preview
@@ -162,7 +165,7 @@ augroup prettier
 augroup END
 
 " Nerdtree
-map <leader>nt :NERDTreeToggle<CR>
+map <leader>n :NERDTreeToggle<CR>
 
 " ALE
 let g:airline#extensions#ale#enabled = 1
@@ -213,7 +216,7 @@ set wildmenu
 " TYPESCEIPT
 " this makes it slow...
 " let g:tsuquyomi_completion_detail = 1
-let g:tsuquyomi_disable_quickfix = 1
+" let g:tsuquyomi_disable_quickfix = 1
 
 " VIMUX
 let g:VimuxHeight = "15"
