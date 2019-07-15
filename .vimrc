@@ -86,6 +86,7 @@ cnoremap s/ s/\v
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 nnoremap <C-X> :bdelete<CR>
+nnoremap <C-c> :bp\|bd #<CR>
 
 " Panes
 nnoremap <c-h> <c-w>h
@@ -238,9 +239,6 @@ abbrev @@@ christian@ambrite.ch
 " NORMAL MODE
 nnoremap <leader>win <c-w>
 nnoremap <leader>el /\v^$\s*<cr>:nohl<cr>
-
-" INSERT MODE
-inoremap cc <c-x><c-o>
 
 " }}}
 
