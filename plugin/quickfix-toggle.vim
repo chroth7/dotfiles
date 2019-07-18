@@ -1,4 +1,8 @@
 nnoremap <leader>qf :call <SID>QuickfixToggle()<cr>
+nnoremap <leader>qc :ccl<cr>
+nnoremap <leader>qn :cn<cr>
+nnoremap <leader>qp :cp<cr>
+nnoremap <leader>qn :copen<cr>
 
 let g:quickfix_is_open = 0
 
