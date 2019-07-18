@@ -64,6 +64,7 @@ alias v="vim"
 alias glcoud="gcloud"
 alias kx="kubectx"
 alias kn="kubens"
+alias rmswp='find . -type f -name ".*.swp" -exec rm -f {} \;'
 
 # MY GIT
 alias gpd="git checkout develop && git pull"
