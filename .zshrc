@@ -66,6 +66,14 @@ alias kx="kubectx"
 alias kn="kubens"
 alias rmswp='find . -type f -name ".*.swp" -exec rm -f {} \;'
 
+# NPM
+alias ns='npm start'
+alias nw='npm run watch'
+alias nt='npm test'
+alias nwt='npm run watch-test'
+alias nde='npm run decryptEnv'
+alias nee='npm run encryptEnv'
+
 # MY GIT
 alias gpd="git checkout develop && git pull"
 alias gpm="git checkout master && git pull"
