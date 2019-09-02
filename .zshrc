@@ -38,6 +38,8 @@ export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$(brew --prefix cu
 # Too slow...
 # eval "$(jenv init -)"
 
+eval $(thefuck --alias)
+
 export PATH=$PATH:~/.local/bin
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH=$PATH:~/Library/Python/3.7/bin
@@ -98,6 +100,7 @@ alias cbtqluhd='echo "project = qluhdapp\ninstance = qluhd-bigtable" >! ~/.cbtrc
 
 # kube
 alias kf='sudo kubefwd svc -n'
+alias kde='kubectl get po --field-selector 'status.phase!=Evicted' -o json | kubectl delete -f -'
 
 # Global alias, expanded anywhere >> Use: ls -l G foo
 alias -g G='| grep -i'
