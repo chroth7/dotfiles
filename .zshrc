@@ -11,6 +11,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# ghc
+source $HOME/.ghcup/env
+
 # Customize to your needs...
 
 # Add env.sh
