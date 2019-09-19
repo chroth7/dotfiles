@@ -11,6 +11,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# Load zplug
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
 # Customize to your needs...
 
 # Add env.sh
@@ -28,7 +32,7 @@ bindkey "$terminfo[kcud1]" down-line-or-beginning-search # Down
 # ZSH_THEME=agnoster
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-plugins=(git colorize github vi-mode brew osx zsh-syntax-highlighting kubectl kube-ps1)
+plugins=(git colorize github vi-mode brew osx zsh-syntax-highlighting kubectl kube-ps1 docker)
 
 source $ZSH/oh-my-zsh.sh
 source $MYZSH/tmux 
@@ -76,6 +80,8 @@ alias glcoud="gcloud"
 alias kx="kubectx"
 alias kn="kubens"
 alias rmswp='find . -type f -name ".*.swp" -exec rm -f {} \;'
+
+alias cf='/usr/local/bin/functions'
 
 # NPM
 alias ns='npm start'
