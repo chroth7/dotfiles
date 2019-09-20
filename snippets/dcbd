@@ -1,0 +1,3 @@
+steps:
+  - name: "ubuntu"
+    args: ["echo", "Oh yeah, we build in the cloud!"]
