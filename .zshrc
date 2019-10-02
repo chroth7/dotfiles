@@ -11,6 +11,24 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+#  Load zplug
+# check if installed
+if [[ ! -d ~/.zplug ]];then
+    git clone https://github.com/b4b4r07/zplug ~/.zplug
+fi
+# check if need to install a plugin
+if ! zplug check --verbose; then
+    printf "Install zplug plugins? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+export ZPLUG_HOME=~/.zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug "avivl/gcloud-project", use:init.sh
+zplug "akarzim/zsh-docker-aliases"
+
 # ghc
 source $HOME/.ghcup/env
 
@@ -31,7 +49,7 @@ bindkey "$terminfo[kcud1]" down-line-or-beginning-search # Down
 # ZSH_THEME=agnoster
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-plugins=(git colorize github vi-mode brew osx zsh-syntax-highlighting kubectl kube-ps1)
+plugins=(git github vi-mode brew osx zsh-syntax-highlighting kubectl docker kube-ps1)
 
 source $ZSH/oh-my-zsh.sh
 source $MYZSH/tmux 
@@ -79,6 +97,8 @@ alias glcoud="gcloud"
 alias kx="kubectx"
 alias kn="kubens"
 alias rmswp='find . -type f -name ".*.swp" -exec rm -f {} \;'
+
+alias cf='/usr/local/bin/functions'
 
 # NPM
 alias ns='npm start'
