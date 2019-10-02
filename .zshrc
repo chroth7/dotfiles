@@ -16,6 +16,10 @@ fi
 if [[ ! -d ~/.zplug ]];then
     git clone https://github.com/b4b4r07/zplug ~/.zplug
 fi
+
+export ZPLUG_HOME=~/.zplug
+source $ZPLUG_HOME/init.zsh
+
 # check if need to install a plugin
 if ! zplug check --verbose; then
     printf "Install zplug plugins? [y/N]: "
@@ -23,8 +27,6 @@ if ! zplug check --verbose; then
         echo; zplug install
     fi
 fi
-export ZPLUG_HOME=~/.zplug
-source $ZPLUG_HOME/init.zsh
 
 zplug "avivl/gcloud-project", use:init.sh
 zplug "akarzim/zsh-docker-aliases"
