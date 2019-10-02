@@ -29,6 +29,9 @@ source $ZPLUG_HOME/init.zsh
 zplug "avivl/gcloud-project", use:init.sh
 zplug "akarzim/zsh-docker-aliases"
 
+# ghc
+source $HOME/.ghcup/env
+
 # Customize to your needs...
 
 # Add env.sh
