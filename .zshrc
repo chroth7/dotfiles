@@ -105,6 +105,7 @@ alias cf='/usr/local/bin/functions'
 # NPM
 alias ns='npm start'
 alias nw='npm run watch'
+alias nd='npm run dev'
 alias nt='npm test'
 alias nwt='npm run watch-test'
 alias nde='npm run decryptEnv'
