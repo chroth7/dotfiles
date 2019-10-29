@@ -110,6 +110,8 @@ alias nt='npm test'
 alias nwt='npm run watch-test'
 alias nde='npm run decryptEnv'
 alias nee='npm run encryptEnv'
+alias ndel='npm run decryptEnvLocal'
+alias neel='npm run encryptEnvLocal'
 
 # MY GIT
 alias gpd="git checkout develop && git pull"
