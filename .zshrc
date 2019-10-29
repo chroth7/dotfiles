@@ -132,6 +132,7 @@ alias kde='kubectl get po --field-selector 'status.phase!=Evicted' -o json | kub
 
 # Global alias, expanded anywhere >> Use: ls -l G foo
 alias -g G='| grep -i'
+alias -g onecell=' cells-per-column=1'
 
 # Suffix alias, will automatically exec a program
 # Use like: `something.yml` > will auto open vim for it
