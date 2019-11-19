@@ -294,3 +294,5 @@ tmux_conf_copy_to_os_clipboard=false
 
 # move status line to top
 # set -g status-position top
+set -g window-style 'fg=colour247,bg=colour236'
+set -g window-active-style 'fg=colour250,bg=black'

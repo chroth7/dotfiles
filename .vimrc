@@ -11,7 +11,8 @@ endif
 " Plugins ------ {{{
 call plug#begin('~/.vim/plugged')
 
-" Note: use :PlugInstall to install plugins
+" Note: First source the vim again (<leader>sv)
+" Note: and then use :PlugInstall to install plugins
 
 Plug 'w0rp/ale'
 Plug 'micha/vim-colors-solarized'
@@ -37,6 +38,13 @@ Plug 'chrisbra/NrrwRgn'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Haskell Plugins
+Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/neco-ghc'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 call plug#end()
 " }}}
@@ -50,6 +58,11 @@ colorscheme solarized
 set expandtab tabstop=2 shiftwidth=2
 set splitbelow
 set splitright
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-a>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
 
 augroup filetype_vim
   autocmd!
@@ -185,7 +198,10 @@ let NERDTreeShowHidden = 1
 
 " ALE
 let g:airline#extensions#ale#enabled = 1
-let g:ale_linters = { 'typescript': ['tslint'] }
+let g:ale_linters = { 
+      \ 'typescript': ['tslint'], 
+      \ 'haskell': ['stack-ghc', 'ghc-mod', 'hlint', 'hdevtools', 'hfmt'] 
+      \ }
 
 " Tagbar
 nnoremap <leader>tb :TagbarToggle<CR>
@@ -263,3 +279,10 @@ nnoremap <leader>dcbd :-1read $HOME/.vim/snippets/dcbd<CR>
 nnoremap <leader>clg :-1read $HOME/.vim/snippets/clg.ts<CR>$hi
 " }}}
 
+" HASKELL ------ {{{
+nnoremap <Leader>ht :GhcModType<cr>
+nnoremap <Leader>htc :GhcModTypeClear<cr>
+nnoremap <Leader>hc :GhcModCheck<cr>
+nnoremap <Leader>hl :GhcModLint<cr>
+autocmd FileType haskell nnoremap <buffer> <leader>? :call
+" }}}
