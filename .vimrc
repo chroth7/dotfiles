@@ -58,10 +58,9 @@ colorscheme solarized
 set expandtab tabstop=2 shiftwidth=2
 set splitbelow
 set splitright
+set backspace=2
 
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-a>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 augroup filetype_vim
