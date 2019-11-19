@@ -22,6 +22,8 @@ What I use in my daily work, updated every so often. Use at your own risk.
 
 ## SNIPPETS
 
+Deprecated - we are moving to SirVer/ultisnips and honza/vim-snippets.
+
 `cd && ln -s ./dotfiles/snippets ./.vim/snippets`
 
 ## PLUGINS
