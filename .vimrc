@@ -40,6 +40,8 @@ Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'nbouscal/vim-stylish-haskell'
+Plug 'Chiel92/vim-autoformat'
 
 " Haskell Plugins
 Plug 'eagletmt/ghcmod-vim'
@@ -62,20 +64,6 @@ set backspace=2
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsEditSplit="vertical"
-
-augroup filetype_vim
-  autocmd!
-  autocmd FileType vim nnoremap <leader>fs O" ABC ------ {{{<esc>FAcw
-  autocmd FileType vim nnoremap <leader>fe o" }}}
-  autocmd FileType vim setlocal foldmethod=marker
-augroup END
-
-augroup filetype_typescript
-  autocmd!
-  autocmd FileType typescript setlocal foldmethod=indent
-  autocmd FileType typescript nnoremap <leader>im :TsuImport<CR>
-  autocmd FileType typescript nnoremap <leader>lg iconsole.log()<esc>i
-augroup END
 
 augroup preview
   autocmd!
@@ -279,7 +267,29 @@ nnoremap <leader>dcbd :-1read $HOME/.vim/snippets/dcbd<CR>
 nnoremap <leader>clg :-1read $HOME/.vim/snippets/clg.ts<CR>$hi
 " }}}
 
-" HASKELL ------ {{{
+" Filetype MORE THAN ONE ------ {{{
+
+" }}}
+
+" Filetype: VIM ------ {{{
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim nnoremap <leader>fs O" ABC ------ {{{<esc>FAcw
+  autocmd FileType vim nnoremap <leader>fe o" }}}
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+" Filetype: TYPESCRIPT ------ {{{
+augroup filetype_typescript
+  autocmd!
+  autocmd FileType typescript setlocal foldmethod=indent
+  autocmd FileType typescript nnoremap <leader>im :TsuImport<CR>
+  autocmd FileType typescript nnoremap <leader>lg iconsole.log()<esc>i
+augroup END
+" }}} 
+
+" Filetype: HASKELL ------ {{{
 nnoremap <Leader>ht :GhcModType<cr>
 nnoremap <Leader>htc :GhcModTypeClear<cr>
 nnoremap <Leader>hc :GhcModCheck<cr>
