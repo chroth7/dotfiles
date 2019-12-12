@@ -42,6 +42,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'nbouscal/vim-stylish-haskell'
 Plug 'Chiel92/vim-autoformat'
+Plug 'derekwyatt/vim-scala'
 
 " Haskell Plugins
 Plug 'eagletmt/ghcmod-vim'
