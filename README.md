@@ -39,3 +39,10 @@ Some ideas:
 
 - Apperance > Dimming: I like to have dimming enabled if window is not active
 - Profiles > Colors > Smart Box Cursor Color: Easier to find the cursor (alternatively: use a signal color)
+
+# Lanugages
+
+## Scala
+
+To use coc with Scala, execute `:CocInstall coc-metals`
+This should add metals to the coc server and the rest is configured in the dotfiles.
