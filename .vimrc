@@ -64,7 +64,7 @@ set splitbelow
 set splitright
 set backspace=2
 
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
 augroup preview
