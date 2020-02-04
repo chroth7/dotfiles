@@ -96,7 +96,7 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Use very magic by default
 nnoremap / /\v
 nnoremap ? ?\v
-cnoremap s/ s/\v
+" cnoremap s/ s/\v
 
 " Buffers
 nnoremap <Tab> :bnext<CR>
