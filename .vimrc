@@ -286,7 +286,6 @@ augroup END
 augroup filetype_typescript
   autocmd!
   autocmd FileType typescript setlocal foldmethod=indent
-  autocmd FileType typescript nnoremap <leader>im :TsuImport<CR>
   autocmd FileType typescript nnoremap <leader>lg iconsole.log()<esc>i
 augroup END
 " }}} 

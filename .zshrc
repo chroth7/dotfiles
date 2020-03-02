@@ -58,6 +58,10 @@ source $MYZSH/tmux
 
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$(brew --prefix curl)/bin:$HOME/.jenv/bin:$HOME/miniconda3/bin:$PATH"
+
+export SPARK_HOME=$HOME/spark3p2
+export PATH=$SPARK_HOME:$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH
+
 # Too slow...
 # eval "$(jenv init -)"
 
