@@ -44,6 +44,8 @@ Plug 'nbouscal/vim-stylish-haskell'
 Plug 'Chiel92/vim-autoformat'
 Plug 'derekwyatt/vim-scala'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'scrooloose/vim-slumlord'
+Plug 'aklt/plantuml-syntax'
 
 " Haskell Plugins
 Plug 'eagletmt/ghcmod-vim'
