@@ -28,7 +28,6 @@ if ! zplug check --verbose; then
     fi
 fi
 
-zplug "avivl/gcloud-project", use:init.sh
 zplug "akarzim/zsh-docker-aliases"
 
 # ghc
