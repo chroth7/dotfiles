@@ -11,25 +11,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-#  Load zplug
-# check if installed
-if [[ ! -d ~/.zplug ]];then
-    git clone https://github.com/b4b4r07/zplug ~/.zplug
-fi
-
-export ZPLUG_HOME=~/.zplug
-source $ZPLUG_HOME/init.zsh
-
-# check if need to install a plugin
-if ! zplug check --verbose; then
-    printf "Install zplug plugins? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-zplug "akarzim/zsh-docker-aliases"
-
 # ghc
 source $HOME/.ghcup/env
 
@@ -50,7 +31,7 @@ bindkey "$terminfo[kcud1]" down-line-or-beginning-search # Down
 # ZSH_THEME=agnoster
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-plugins=(git github vi-mode brew osx zsh-syntax-highlighting kubectl docker kube-ps1)
+plugins=(git github vi-mode brew osx kubectl docker kube-ps1)
 
 source $ZSH/oh-my-zsh.sh
 source $MYZSH/tmux 
@@ -92,6 +73,8 @@ export PATH=$PATH:/opt/apache-maven/bin
 
 # MY OWN ALIASES
 export EDITOR=vim
+
+source ~/dotfiles/aliases/docker.zsh
 
 alias dotv="vim ~/.vimrc"
 alias srcv="source ~/.vimrc"
