@@ -34,7 +34,6 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 plugins=(git github vi-mode brew osx kubectl docker kube-ps1)
 
 source $ZSH/oh-my-zsh.sh
-source $MYZSH/tmux 
 
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$(brew --prefix curl)/bin:$HOME/.jenv/bin:$HOME/miniconda3/bin:$PATH"
@@ -75,6 +74,7 @@ export PATH=$PATH:/opt/apache-maven/bin
 export EDITOR=vim
 
 source ~/dotfiles/aliases/docker.zsh
+source ~/dotfiles/aliases/tmux.zsh
 
 alias dotv="vim ~/.vimrc"
 alias srcv="source ~/.vimrc"
