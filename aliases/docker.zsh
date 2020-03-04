@@ -5,6 +5,10 @@
 # Author:
 #   François Vantomme <akarzim@gmail.com>
 #
+#
+# custom
+alias pydocker="docker run -it -p 8080:8080 python:3.7 /bin/bash"
+
 
 #
 # Aliases

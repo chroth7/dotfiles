@@ -75,63 +75,13 @@ export EDITOR=vim
 
 source ~/dotfiles/aliases/docker.zsh
 source ~/dotfiles/aliases/tmux.zsh
-
-alias dotv="vim ~/.vimrc"
-alias srcv="source ~/.vimrc"
-alias dotz="vim ~/.zshrc"
-alias srcz="source ~/.zshrc"
-alias v="/usr/local/bin/vim"
-alias glcoud="gcloud"
-alias kx="kubectx"
-alias kn="kubens"
-alias rmswp='find . -type f -name ".*.swp" -exec rm -f {} \;'
-
-alias cf='/usr/local/bin/functions'
-
-# NPM
-alias ns='npm start'
-alias nw='npm run watch'
-alias nd='npm run dev'
-alias nt='npm test'
-alias nwt='npm run watch-test'
-alias nde='npm run decryptEnv'
-alias nee='npm run encryptEnv'
-alias ndel='npm run decryptEnvLocal'
-alias neel='npm run encryptEnvLocal'
-
-# MY GIT
-alias gpd="git checkout develop && git pull"
-alias gpm="git checkout master && git pull"
-
-# Docker
-alias pydocker="docker run -it -p 8080:8080 python:3.7 /bin/bash"
-
-# Spotify
-alias play="spotify play"
-alias pause="spotify pause"
-
-# cbt
-alias cbttlabs='echo "project = tlabs-123\ninstance = tlabs-bigtable" >! ~/.cbtrc'
-alias cbtranger='echo "project = t2-prod\ninstance = ranger-bigtable" >! ~/.cbtrc'
-alias cbtqluhd='echo "project = qluhdapp\ninstance = qluhd-bigtable" >! ~/.cbtrc'
-
-# kube
-alias kf='sudo kubefwd svc -n'
-alias kde='kubectl get po --field-selector 'status.phase!=Evicted' -o json | kubectl delete -f -'
-
-# fluent related
-alias systail='tail -f /var/log/system.log'
-
-# td-agent
-alias tdstart='sudo launchctl load /Library/LaunchDaemons/td-agent.plist'
-alias tdstop='sudo launchctl unload /Library/LaunchDaemons/td-agent.plist'
-alias tdrestart='tdstop && tdstart'
-alias tdtail='tail -f /var/log/td-agent/td-agent.log'
-alias tdtest="curl -X POST -d 'json={\"json\":\"message $RANDOM\"}' http://localhost:8888/debug.test"
-
-# fluentd (as gem)
-alias flstart="fluentd -c ~/fluent/fluent.conf -vv"
-alias flstop="killall -9 fluentd"
+source ~/dotfiles/aliases/generalAliases.zsh
+source ~/dotfiles/aliases/npm.zsh
+source ~/dotfiles/aliases/git.zsh
+source ~/dotfiles/aliases/spotify.zsh
+source ~/dotfiles/aliases/cbt.zsh
+source ~/dotfiles/aliases/fluentd.zsh
+source ~/dotfiles/aliases/kube.zsh
 
 # Global alias, expanded anywhere >> Use: ls -l G foo
 alias -g G='| grep -i'
