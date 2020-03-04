@@ -11,25 +11,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-#  Load zplug
-# check if installed
-if [[ ! -d ~/.zplug ]];then
-    git clone https://github.com/b4b4r07/zplug ~/.zplug
-fi
-
-export ZPLUG_HOME=~/.zplug
-source $ZPLUG_HOME/init.zsh
-
-# check if need to install a plugin
-if ! zplug check --verbose; then
-    printf "Install zplug plugins? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-zplug "akarzim/zsh-docker-aliases"
-
 # ghc
 source $HOME/.ghcup/env
 
@@ -50,10 +31,9 @@ bindkey "$terminfo[kcud1]" down-line-or-beginning-search # Down
 # ZSH_THEME=agnoster
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-plugins=(git github vi-mode brew osx zsh-syntax-highlighting kubectl docker kube-ps1)
+plugins=(git github vi-mode brew osx kubectl docker kube-ps1)
 
 source $ZSH/oh-my-zsh.sh
-source $MYZSH/tmux 
 
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$(brew --prefix curl)/bin:$HOME/.jenv/bin:$HOME/miniconda3/bin:$PATH"
@@ -93,62 +73,15 @@ export PATH=$PATH:/opt/apache-maven/bin
 # MY OWN ALIASES
 export EDITOR=vim
 
-alias dotv="vim ~/.vimrc"
-alias srcv="source ~/.vimrc"
-alias dotz="vim ~/.zshrc"
-alias srcz="source ~/.zshrc"
-alias v="/usr/local/bin/vim"
-alias glcoud="gcloud"
-alias kx="kubectx"
-alias kn="kubens"
-alias rmswp='find . -type f -name ".*.swp" -exec rm -f {} \;'
-
-alias cf='/usr/local/bin/functions'
-
-# NPM
-alias ns='npm start'
-alias nw='npm run watch'
-alias nd='npm run dev'
-alias nt='npm test'
-alias nwt='npm run watch-test'
-alias nde='npm run decryptEnv'
-alias nee='npm run encryptEnv'
-alias ndel='npm run decryptEnvLocal'
-alias neel='npm run encryptEnvLocal'
-
-# MY GIT
-alias gpd="git checkout develop && git pull"
-alias gpm="git checkout master && git pull"
-
-# Docker
-alias pydocker="docker run -it -p 8080:8080 python:3.7 /bin/bash"
-
-# Spotify
-alias play="spotify play"
-alias pause="spotify pause"
-
-# cbt
-alias cbttlabs='echo "project = tlabs-123\ninstance = tlabs-bigtable" >! ~/.cbtrc'
-alias cbtranger='echo "project = t2-prod\ninstance = ranger-bigtable" >! ~/.cbtrc'
-alias cbtqluhd='echo "project = qluhdapp\ninstance = qluhd-bigtable" >! ~/.cbtrc'
-
-# kube
-alias kf='sudo kubefwd svc -n'
-alias kde='kubectl get po --field-selector 'status.phase!=Evicted' -o json | kubectl delete -f -'
-
-# fluent related
-alias systail='tail -f /var/log/system.log'
-
-# td-agent
-alias tdstart='sudo launchctl load /Library/LaunchDaemons/td-agent.plist'
-alias tdstop='sudo launchctl unload /Library/LaunchDaemons/td-agent.plist'
-alias tdrestart='tdstop && tdstart'
-alias tdtail='tail -f /var/log/td-agent/td-agent.log'
-alias tdtest="curl -X POST -d 'json={\"json\":\"message $RANDOM\"}' http://localhost:8888/debug.test"
-
-# fluentd (as gem)
-alias flstart="fluentd -c ~/fluent/fluent.conf -vv"
-alias flstop="killall -9 fluentd"
+source ~/dotfiles/aliases/docker.zsh
+source ~/dotfiles/aliases/tmux.zsh
+source ~/dotfiles/aliases/generalAliases.zsh
+source ~/dotfiles/aliases/npm.zsh
+source ~/dotfiles/aliases/git.zsh
+source ~/dotfiles/aliases/spotify.zsh
+source ~/dotfiles/aliases/cbt.zsh
+source ~/dotfiles/aliases/fluentd.zsh
+source ~/dotfiles/aliases/kube.zsh
 
 # Global alias, expanded anywhere >> Use: ls -l G foo
 alias -g G='| grep -i'
