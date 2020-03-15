@@ -292,6 +292,15 @@ augroup filetype_typescript
 augroup END
 " }}}
 
+" Filetype: TYPESCRIPTREACT ------ {{{
+augroup filetype_typescriptreact
+  autocmd!
+  autocmd FileType typescriptreact setlocal filetype=typescript.tsx
+  autocmd FileType typescript.tsx setlocal foldmethod=indent
+  autocmd FileType typescript.tsx nnoremap <leader>lg iconsole.log()<esc>i
+augroup END
+" }}}
+
 " Filetype: HASKELL ------ {{{
 nnoremap <Leader>ht :GhcModType<cr>
 nnoremap <Leader>htc :GhcModTypeClear<cr>
