@@ -178,7 +178,7 @@ nnoremap <leader>ts :call TerminateLineWithSemi()<cr>
 " Plugin Related ------ {{{
 " Prettier
 let g:prettier#autoformat = 0
-augroup prettier 
+augroup prettier
   autocmd!
   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
 augroup END
@@ -189,9 +189,9 @@ let NERDTreeShowHidden = 1
 
 " ALE
 " let g:airline#extensions#ale#enabled = 1
-" let g:ale_linters = { 
-"       \ 'typescript': ['tslint'], 
-"       \ 'haskell': ['stack-ghc', 'ghc-mod', 'hlint', 'hdevtools', 'hfmt'] 
+" let g:ale_linters = {
+"       \ 'typescript': ['tslint'],
+"       \ 'haskell': ['stack-ghc', 'ghc-mod', 'hlint', 'hdevtools', 'hfmt']
 "       \ }
 
 " Tagbar
@@ -290,7 +290,7 @@ augroup filetype_typescript
   autocmd FileType typescript setlocal foldmethod=indent
   autocmd FileType typescript nnoremap <leader>lg iconsole.log()<esc>i
 augroup END
-" }}} 
+" }}}
 
 " Filetype: HASKELL ------ {{{
 nnoremap <Leader>ht :GhcModType<cr>
