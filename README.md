@@ -6,6 +6,12 @@ What I use in my daily work, updated every so often. Use at your own risk.
 
 `cd && ln -s ./dotfiles/.vimrc .vimrc`
 
+### COC-NEOVIM
+
+Once everything is installed, you want to add your custom languages, e.g.:
+
+- `:CocInstall coc-tsserver`
+
 ## ZSH
 
 `cd && ln -s ./dotfiles/.zshrc .zshrc`
