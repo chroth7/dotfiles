@@ -114,6 +114,9 @@ nnoremap <c-l> <c-w>l
 
 nnoremap <leader>hw iHello World<esc>
 nnoremap <leader>hoi iHoi World<esc>
+
+" Tagbar
+nnoremap <leader>tt :TagbarToggle<CR>
 " }}}
 
 " ANNOY ME ------ {{{
@@ -196,6 +199,19 @@ let NERDTreeShowHidden = 1
 
 " Tagbar
 nnoremap <leader>tb :TagbarToggle<CR>
+let g:tagbar_type_typescript = {
+  \ 'ctagstype': 'typescript',
+  \ 'kinds': [
+    \ 'c:classes',
+    \ 'n:modules',
+    \ 'f:functions',
+    \ 'v:variables',
+    \ 'v:varlambdas',
+    \ 'm:members',
+    \ 'i:interfaces',
+    \ 'e:enums',
+  \ ]
+\ }
 
 " Airline
 let g:airline_solarized_bg='dark'
