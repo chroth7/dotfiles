@@ -2,6 +2,7 @@
 
 # zmodload zsh/zprof
 
+export LC_ALL=en_US.UTF-8
 export ZSH=$HOME/.oh-my-zsh
 export MYZSH=$HOME/.zsh
 export TERM="xterm-256color"
