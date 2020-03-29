@@ -1,4 +1,5 @@
 # NPM
+alias nci='rm -rf node_modules && rm -f package-lock.json && npm install'
 alias ns='npm start'
 alias nw='npm run watch'
 alias nd='npm run dev'
