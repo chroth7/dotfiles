@@ -83,6 +83,7 @@ source ~/dotfiles/aliases/spotify.zsh
 source ~/dotfiles/aliases/cbt.zsh
 source ~/dotfiles/aliases/fluentd.zsh
 source ~/dotfiles/aliases/kube.zsh
+source ~/dotfiles/aliases/prettier.zsh
 
 # Global alias, expanded anywhere >> Use: ls -l G foo
 alias -g G='| grep -i'

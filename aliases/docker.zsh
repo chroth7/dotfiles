@@ -8,6 +8,7 @@
 #
 # custom
 alias pydocker="docker run -it -p 8080:8080 python:3.7 /bin/bash"
+alias deti="docker exec -it"
 
 
 #

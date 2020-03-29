@@ -114,6 +114,9 @@ nnoremap <c-l> <c-w>l
 
 nnoremap <leader>hw iHello World<esc>
 nnoremap <leader>hoi iHoi World<esc>
+
+" Tagbar
+nnoremap <leader>tt :TagbarToggle<CR>
 " }}}
 
 " ANNOY ME ------ {{{
@@ -178,7 +181,7 @@ nnoremap <leader>ts :call TerminateLineWithSemi()<cr>
 " Plugin Related ------ {{{
 " Prettier
 let g:prettier#autoformat = 0
-augroup prettier 
+augroup prettier
   autocmd!
   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
 augroup END
@@ -189,13 +192,26 @@ let NERDTreeShowHidden = 1
 
 " ALE
 " let g:airline#extensions#ale#enabled = 1
-" let g:ale_linters = { 
-"       \ 'typescript': ['tslint'], 
-"       \ 'haskell': ['stack-ghc', 'ghc-mod', 'hlint', 'hdevtools', 'hfmt'] 
+" let g:ale_linters = {
+"       \ 'typescript': ['tslint'],
+"       \ 'haskell': ['stack-ghc', 'ghc-mod', 'hlint', 'hdevtools', 'hfmt']
 "       \ }
 
 " Tagbar
 nnoremap <leader>tb :TagbarToggle<CR>
+let g:tagbar_type_typescript = {
+  \ 'ctagstype': 'typescript',
+  \ 'kinds': [
+    \ 'c:classes',
+    \ 'n:modules',
+    \ 'f:functions',
+    \ 'v:variables',
+    \ 'v:varlambdas',
+    \ 'm:members',
+    \ 'i:interfaces',
+    \ 'e:enums',
+  \ ]
+\ }
 
 " Airline
 let g:airline_solarized_bg='dark'
@@ -290,7 +306,16 @@ augroup filetype_typescript
   autocmd FileType typescript setlocal foldmethod=indent
   autocmd FileType typescript nnoremap <leader>lg iconsole.log()<esc>i
 augroup END
-" }}} 
+" }}}
+
+" Filetype: TYPESCRIPTREACT ------ {{{
+augroup filetype_typescriptreact
+  autocmd!
+  autocmd FileType typescriptreact setlocal filetype=typescript.tsx
+  autocmd FileType typescript.tsx setlocal foldmethod=indent
+  autocmd FileType typescript.tsx nnoremap <leader>lg iconsole.log()<esc>i
+augroup END
+" }}}
 
 " Filetype: HASKELL ------ {{{
 nnoremap <Leader>ht :GhcModType<cr>
