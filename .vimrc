@@ -303,7 +303,7 @@ augroup END
 " Filetype: TYPESCRIPT ------ {{{
 augroup filetype_typescript
   autocmd!
-  autocmd FileType typescript setlocal foldmethod=indent
+  " autocmd FileType typescript setlocal foldmethod=indent
   autocmd FileType typescript nnoremap <leader>lg iconsole.log()<esc>i
 augroup END
 " }}}
@@ -312,7 +312,7 @@ augroup END
 augroup filetype_typescriptreact
   autocmd!
   autocmd FileType typescriptreact setlocal filetype=typescript.tsx
-  autocmd FileType typescript.tsx setlocal foldmethod=indent
+  " autocmd FileType typescript.tsx setlocal foldmethod=indent
   autocmd FileType typescript.tsx nnoremap <leader>lg iconsole.log()<esc>i
 augroup END
 " }}}
