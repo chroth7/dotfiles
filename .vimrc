@@ -183,11 +183,12 @@ nnoremap <leader>ts :call TerminateLineWithSemi()<cr>
 let g:prettier#autoformat = 0
 augroup prettier
   autocmd!
-  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html,*.mdx Prettier
 augroup END
 
 " Nerdtree
 map <leader>n :NERDTreeToggle<CR>
+map <leader>nf :NERDTreeFind<CR>
 let NERDTreeShowHidden = 1
 
 " ALE
