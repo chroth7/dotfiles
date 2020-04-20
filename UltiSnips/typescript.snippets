@@ -1,0 +1,25 @@
+snippet tests "add a testsuite" b
+describe("$1", () => {
+
+})
+endsnippet
+
+snippet dtests "add dummy testsuite" b
+describe("$1", () => {
+  test("$2", () => {
+		expect(1+1).toBe(2);
+	})
+})
+endsnippet
+	
+snippet test "add a test" b
+test("$1", () => {
+
+})
+endsnippet
+
+snippet dtest "add a dummy test" b
+test("$1", () => {
+	expect(1+1).toBe(2);
+})
+endsnippet

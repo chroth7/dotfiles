@@ -66,8 +66,10 @@ set splitbelow
 set splitright
 set backspace=2
 
+" UltiSnips
 let g:UltiSnipsExpandTrigger="<c-a>"
 let g:UltiSnipsEditSplit="vertical"
+nnoremap <leader>use :UltiSnipsEdit<CR>
 
 augroup preview
   autocmd!
