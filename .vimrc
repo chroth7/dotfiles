@@ -69,7 +69,8 @@ set backspace=2
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-a>"
 let g:UltiSnipsEditSplit="vertical"
-nnoremap <leader>use :UltiSnipsEdit<CR>
+let g:UltiSnipsJumpForwardTrigger="<c-f>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
 augroup preview
   autocmd!
@@ -284,10 +285,6 @@ nnoremap <leader>el /\v^$\s*<cr>:nohl<cr>
 
 " SNIPPETS ------ {{{
 nnoremap <leader>use :UltiSnipsEdit<CR>
-nnoremap <leader>aio :-1read $HOME/.vim/snippets/aio.ts<CR>
-nnoremap <leader>dtest :-1read $HOME/.vim/snippets/dummytest.ts<CR>
-nnoremap <leader>dcbd :-1read $HOME/.vim/snippets/dcbd<CR>
-nnoremap <leader>clg :-1read $HOME/.vim/snippets/clg.ts<CR>$hi
 " }}}
 
 " Filetype MORE THAN ONE ------ {{{
