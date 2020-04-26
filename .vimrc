@@ -65,6 +65,7 @@ set expandtab tabstop=2 shiftwidth=2
 set splitbelow
 set splitright
 set backspace=2
+vmap '' :w !pbcopy<CR><CR>
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-a>"
