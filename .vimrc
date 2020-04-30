@@ -298,6 +298,7 @@ augroup filetype_vim
   autocmd FileType vim nnoremap <leader>fs O" ABC ------ {{{<esc>FAcw
   autocmd FileType vim nnoremap <leader>fe o" }}}
   autocmd FileType vim setlocal foldmethod=marker
+  autocmd BufWritePre * %s/\s\+$//e
 augroup END
 " }}}
 
@@ -306,6 +307,7 @@ augroup filetype_typescript
   autocmd!
   " autocmd FileType typescript setlocal foldmethod=indent
   autocmd FileType typescript nnoremap <leader>lg iconsole.log()<esc>i
+  autocmd BufWritePre * %s/\s\+$//e
 augroup END
 " }}}
 
@@ -315,8 +317,15 @@ augroup filetype_typescriptreact
   autocmd FileType typescriptreact setlocal filetype=typescript.tsx
   " autocmd FileType typescript.tsx setlocal foldmethod=indent
   autocmd FileType typescript.tsx nnoremap <leader>lg iconsole.log()<esc>i
+  autocmd BufWritePre * %s/\s\+$//e
 augroup END
 " }}}
+
+" Filetype: Makefile ----- {{{
+augroup filetype_makefile
+  autocmd!
+  autocmd BufWritePre * %s/\s\+$//e
+augroup END
 
 " Filetype: HASKELL ------ {{{
 nnoremap <Leader>ht :GhcModType<cr>
