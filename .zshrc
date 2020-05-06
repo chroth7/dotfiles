@@ -32,7 +32,7 @@ bindkey "$terminfo[kcud1]" down-line-or-beginning-search # Down
 # ZSH_THEME=agnoster
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-plugins=(git github vi-mode brew osx kubectl docker kube-ps1)
+plugins=(git github vi-mode brew osx kubectl docker terraform kube-ps1)
 
 source $ZSH/oh-my-zsh.sh
 

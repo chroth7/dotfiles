@@ -46,6 +46,7 @@ Plug 'derekwyatt/vim-scala'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/vim-slumlord'
 Plug 'aklt/plantuml-syntax'
+Plug 'hashivim/vim-terraform'
 
 " Haskell Plugins
 Plug 'eagletmt/ghcmod-vim'
@@ -66,6 +67,10 @@ set splitbelow
 set splitright
 set backspace=2
 vmap '' :w !pbcopy<CR><CR>
+
+" Terraform
+let g:terraform_fmt_on_save=1
+let g:terraform_align=1
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-a>"
