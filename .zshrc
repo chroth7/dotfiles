@@ -75,6 +75,7 @@ export PATH=$PATH:/opt/apache-maven/bin
 export EDITOR=vim
 
 source ~/dotfiles/aliases/docker.zsh
+source ~/dotfiles/aliases/mongodb.zsh
 source ~/dotfiles/aliases/tmux.zsh
 source ~/dotfiles/aliases/generalAliases.zsh
 source ~/dotfiles/aliases/npm.zsh
