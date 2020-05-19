@@ -7,7 +7,7 @@ alias glcoud="gcloud"
 alias kx="kubectx"
 alias kn="kubens"
 alias rmswp='find . -type f -name ".*.swp" -exec rm -f {} \;'
-alias tf='terraform'
+alias flushdns='sudo killall -HUP mDNSResponder'
 
 alias cf='/usr/local/bin/functions'
 

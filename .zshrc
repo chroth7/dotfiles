@@ -82,6 +82,7 @@ source ~/dotfiles/aliases/npm.zsh
 source ~/dotfiles/aliases/git.zsh
 source ~/dotfiles/aliases/spotify.zsh
 source ~/dotfiles/aliases/cbt.zsh
+source ~/dotfiles/aliases/terraform.zsh
 source ~/dotfiles/aliases/fluentd.zsh
 source ~/dotfiles/aliases/kube.zsh
 source ~/dotfiles/aliases/prettier.zsh
