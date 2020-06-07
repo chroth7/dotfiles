@@ -200,13 +200,6 @@ map <leader>n :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFind<CR>
 let NERDTreeShowHidden = 1
 
-" ALE
-" let g:airline#extensions#ale#enabled = 1
-" let g:ale_linters = {
-"       \ 'typescript': ['tslint'],
-"       \ 'haskell': ['stack-ghc', 'ghc-mod', 'hlint', 'hdevtools', 'hfmt']
-"       \ }
-
 " Tagbar
 nnoremap <leader>tb :TagbarToggle<CR>
 let g:tagbar_type_typescript = {
@@ -241,6 +234,9 @@ nnoremap <Leader>ft :CtrlPTag<CR>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gp :Gpush<cr>
+nnoremap <leader>gl :diffget //3<cr>
+nnoremap <leader>gr :diffget //2<cr>
+
 
 " Incsearch
 map /  <Plug>(incsearch-forward)
