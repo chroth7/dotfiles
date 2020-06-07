@@ -231,12 +231,12 @@ nnoremap <Leader>fa :CtrlPMixed<CR>
 nnoremap <Leader>ft :CtrlPTag<CR>
 
 " fugitive
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gp :Gpush<cr>
-nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>gl :diffget //3<cr>
-nnoremap <leader>gr :diffget //2<cr>
+nnoremap <leader>ggs :Gstatus<cr>
+nnoremap <leader>ggc :Gcommit<cr>
+nnoremap <leader>ggp :Gpush<cr>
+nnoremap <leader>ggd :Gdiff<cr>
+nnoremap <leader>ggl :diffget //3<cr>
+nnoremap <leader>ggr :diffget //2<cr>
 
 " Incsearch
 map /  <Plug>(incsearch-forward)
