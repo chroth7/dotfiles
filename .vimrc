@@ -47,6 +47,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/vim-slumlord'
 Plug 'aklt/plantuml-syntax'
 Plug 'hashivim/vim-terraform'
+Plug 'idanarye/vim-merginal'
 
 " Haskell Plugins
 Plug 'eagletmt/ghcmod-vim'
