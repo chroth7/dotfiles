@@ -233,6 +233,7 @@ nnoremap <Leader>fa :CtrlPMixed<CR>
 nnoremap <Leader>ft :CtrlPTag<CR>
 
 " fugitive
+nnoremap <leader>ggm :Merginal<cr>
 nnoremap <leader>ggs :Gstatus<cr>
 nnoremap <leader>ggc :Gcommit<cr>
 nnoremap <leader>ggp :Gpush<cr>
