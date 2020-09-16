@@ -48,6 +48,10 @@ Plug 'scrooloose/vim-slumlord'
 Plug 'aklt/plantuml-syntax'
 Plug 'hashivim/vim-terraform'
 Plug 'idanarye/vim-merginal'
+Plug 'heavenshell/vim-jsdoc', {
+  \ 'for': ['javascript', 'javascript.jsx','typescript', 'typescript.tsx'],
+  \ 'do': 'make install'
+\}
 
 " Haskell Plugins
 Plug 'eagletmt/ghcmod-vim'

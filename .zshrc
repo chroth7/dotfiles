@@ -73,6 +73,7 @@ export PATH=$PATH:/opt/apache-maven/bin
 
 # MY OWN ALIASES
 export EDITOR=vim
+alias cow='npx -q https://gist.github.com/chroth7/5dbac65a10075027adc7ad337b340952'
 
 source ~/dotfiles/aliases/docker.zsh
 source ~/dotfiles/aliases/mongodb.zsh
