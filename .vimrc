@@ -14,14 +14,13 @@ call plug#begin('~/.vim/plugged')
 " Note: First source the vim again (<leader>sv)
 " Note: and then use :PlugInstall to install plugins
 
-" Plug 'w0rp/ale'
 Plug 'micha/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/gv.vim'
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
@@ -64,6 +63,8 @@ call plug#end()
 " BASICS ------ {{{
 let mapleader=" "
 let dotfolder="~/dotfiles/"
+set noerrorbells
+set noswapfile
 syntax enable
 set background=dark
 colorscheme solarized
@@ -204,6 +205,9 @@ augroup END
 map <leader>n :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFind<CR>
 let NERDTreeShowHidden = 1
+
+" Undotree
+nnoremap <leader>u :UndotreeToggle<CR>
 
 " Tagbar
 nnoremap <leader>tb :TagbarToggle<CR>
