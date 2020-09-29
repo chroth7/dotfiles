@@ -4,17 +4,7 @@ What I use in my daily work, updated every so often. Use at your own risk.
 
 ## NEOVIM
 
-`cd && ln -s ./dotfiles/nvim ~/.config/nvim`
-
-## VIM
-
-`cd && ln -s ./dotfiles/.vimrc .vimrc`
-
-### COC-NEOVIM
-
-Once everything is installed, you want to add your custom languages, e.g.:
-
-- `:CocInstall coc-tsserver`
+`cd && ln -s ~/dotfiles/nvim ~/.config/nvim`
 
 ## ZSH
 
@@ -29,19 +19,6 @@ Once everything is installed, you want to add your custom languages, e.g.:
 ## ctags
 
 `cd && ln -s ./dotfiles/.ctags .ctags
-
-## SNIPPETS
-
-Deprecated - we are moving to SirVer/ultisnips and honza/vim-snippets.
-
-`cd && ln -s ./dotfiles/snippets ./.vim/snippets`
-
-## PLUGINS
-
-We have some scripts that we want to add, and to automate this we simply link it to the ~/.vim/plugin folder.
-If you have other plugins in that folder, you might want to apply a different strategy.
-
-`cd && ln -s ./dotfiles/plugin ./.vim/plugin`
 
 ## iTerm
 
