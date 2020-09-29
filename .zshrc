@@ -72,7 +72,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$PATH:/opt/apache-maven/bin
 
 # MY OWN ALIASES
-export EDITOR=vim
+export EDITOR=nvim
 alias cow='npx -q https://gist.github.com/chroth7/5dbac65a10075027adc7ad337b340952'
 
 source ~/dotfiles/aliases/docker.zsh
@@ -95,7 +95,7 @@ alias -g allns=' --all-namespaces'
 
 # Suffix alias, will automatically exec a program
 # Use like: `something.yml` > will auto open vim for it
-alias -s {yml,yaml,json,js,ts,xml}=vim
+alias -s {yml,yaml,json,js,ts,xml}=nvim
 
 function f() { find . -iname "*$1*" ${@:2} }
 function r() { grep "$1" ${@:2} -R . }

@@ -1,3 +1,5 @@
 # kube
 alias kf='sudo kubefwd svc -n'
-alias kde='kubectl get po --field-selector 'status.phase!=Evicted' -o json | kubectl delete -f -'
+function deleteEvicted() {
+  kubectl get pods --all-namespaces | grep Evicted | awk '{print $2 " --namespace=" $1}' | xargs kubectl delete pod
+}

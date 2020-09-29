@@ -1,0 +1,139 @@
+snippet tests "add a testsuite" b
+describe("$1", () => {
+
+})
+endsnippet
+
+snippet dtests "add dummy testsuite" b
+describe("$1", () => {
+  test("$2", () => {
+		expect(1+1).toBe(2);
+	})
+})
+endsnippet
+
+snippet test "add a test" b
+test("$1", () => {
+
+})
+endsnippet
+
+snippet dtest "add a dummy test" b
+test("$1", () => {
+	expect(1+1).toBe(2);
+})
+endsnippet
+
+snippet todo "add a todo" b
+// TODO: $1 `echo $(date +%Y/%m/%d)` `whoami`
+endsnippet
+
+snippet reactbasic "Adds basic react component" b
+import React from "react";
+
+export const $1 = () => {
+  return <div>Hoi</div>;
+};
+endsnippet
+
+snippet reactstyled "Adds a react component with styles" b
+import React from "react";
+import { makeStyles, createStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    container: {
+      display: "flex",
+      flexDirection: "column",
+      padding: theme.spacing(1),
+    },
+  })
+);
+
+export const $1 = () => {
+  const classes = useStyles();
+  return (
+		<div className={classes.container}>
+			Something
+		</div>
+  );
+};
+endsnippet
+
+snippet props "Adds props" b
+interface Props {
+	$1
+}
+endsnippet
+
+snippet styles "Add styles" b
+const useStyles = makeStyles(() =>
+  createStyles({
+    container: {
+      display: "flex",
+			flexDirection: "column",
+    },
+  })
+);
+endsnippet
+
+snippet stylest "Add styles" b
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    container: {
+      display: "flex",
+			flexDirection: "column",
+    },
+  })
+);
+endsnippet
+
+snippet cN "Add className"
+className={classes.$1}
+endsnippet
+
+snippet divcN "Add div with className"
+<div className={classes.$1}></div>
+endsnippet
+
+snippet stylehook "Add useStyles hook" b
+const classes = useStyles();
+endsnippet
+
+snippet flexrow "Add basic flex" b
+$1: {
+	display: "flex",
+	flexDirection: "row"
+},
+endsnippet
+
+snippet flexcolumn "Add basic flex" b
+$1: {
+	display: "flex",
+	flexDirection: "column"
+},
+endsnippet
+
+snippet ed "Eslint disable next line" b
+// eslint-disable-next-line
+endsnippet
+
+snippet ti "TS-ignore disable next line" b
+// @ts-ignore
+endsnippet
+
+snippet jsr "Joi - required string"
+joi.string().required()
+endsnippet
+
+snippet jnr "Joi - required number"
+joi.number().required()
+endsnippet
+
+snippet ts "Template string variable"
+${$1}
+endsnippet
+
+snippet clfoo "Add console log with FOO tag" b
+console.log("FOO", $1)
+endsnippet

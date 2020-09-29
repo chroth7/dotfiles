@@ -2,6 +2,10 @@
 
 What I use in my daily work, updated every so often. Use at your own risk.
 
+## NEOVIM
+
+`cd && ln -s ./dotfiles/nvim ~/.config/nvim`
+
 ## VIM
 
 `cd && ln -s ./dotfiles/.vimrc .vimrc`
