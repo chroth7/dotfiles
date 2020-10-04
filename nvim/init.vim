@@ -114,7 +114,7 @@ require('telescope').setup{
 EOF
 
 nnoremap <leader>f :lua require'telescope.builtin'.git_files{}<CR>
-nnoremap <leader>\ :lua require'telescope.builtin'.live_grep{}<CR>
+nnoremap \ :lua require'telescope.builtin'.live_grep{}<CR>
 nnoremap <leader>s <cmd>lua require'telescope.builtin'.lsp_references{ shorten_path = true }<CR>
 
 " Airline
