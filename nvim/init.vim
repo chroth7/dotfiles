@@ -9,8 +9,6 @@ call plug#begin("~/.vim/plugged")
   Plug 'overcache/NeoSolarized'
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
-  " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  " Plug 'junegunn/fzf.vim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/telescope.nvim'
@@ -24,8 +22,7 @@ call plug#begin("~/.vim/plugged")
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-repeat'
-  Plug 'scrooloose/nerdtree'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'tpope/vim-vinegar'
   Plug 'easymotion/vim-easymotion'
   Plug 'ludovicchabant/vim-gutentags'
   Plug 'jiangmiao/auto-pairs'
@@ -98,11 +95,6 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
-" FZF
-" nnoremap <leader>f :<C-u>GFiles<CR>
-" nnoremap <leader>gg :<C-u>Files<CR>
-" nnoremap <leader>s :<C-u>Ag<CR>
-
 " Telescope
 lua <<EOF
 -- totally optional to use setup
@@ -123,10 +115,10 @@ let g:airline_solarized_bg='dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
-" Nerdtree
-map <leader>n :NERDTreeToggle<CR>
-map <leader>nf :NERDTreeFind<CR>
-let NERDTreeShowHidden = 1
+" netrw
+map <leader>nn :Ex<CR>
+map <leader>nv :Vex<CR>
+map <leader>ns :Sex<CR>
 
 " Prettier
 let g:prettier#autoformat = 0
