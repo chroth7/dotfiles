@@ -1,10 +1,10 @@
+alias cddot="cd ~/dotfiles"
 alias dotv="nvim ~/.vimrc"
 alias srcv="source ~/.vimrc"
 alias dotz="nvim ~/.zshrc"
 alias srcz="source ~/.zshrc"
 alias v="/usr/local/bin/nvim"
 alias vv="~/Downloads/nvim-osx64/bin/nvim"
-alias vvv='/usr/local/bin/nvim --cmd "set rtp+=$(pwd)" .'
 alias glcoud="gcloud"
 alias kx="kubectx"
 alias kn="kubens"

@@ -25,8 +25,9 @@ call plug#begin("~/.vim/plugged")
   Plug 'tpope/vim-vinegar'
   Plug 'easymotion/vim-easymotion'
   Plug 'ludovicchabant/vim-gutentags'
-  Plug 'jiangmiao/auto-pairs'
   Plug 'haya14busa/incsearch.vim'
+  Plug 'puremourning/vimspector'
+  Plug 'szw/vim-maximizer'
 call plug#end()
 
 "temporary
@@ -90,7 +91,7 @@ map g# <Plug>(incsearch-nohl-g#)
 
 " UltiSnips
 nnoremap <leader>use :UltiSnipsEdit<CR>
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-tab>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
@@ -119,6 +120,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 map <leader>nn :Ex<CR>
 map <leader>nv :Vex<CR>
 map <leader>ns :Sex<CR>
+let g:netrw_liststyle=1
 
 " Prettier
 let g:prettier#autoformat = 0
@@ -158,6 +160,9 @@ nnoremap <leader>go :Git checkout<Space>
 nnoremap <leader>gps :Dispatch! git push<CR>
 nnoremap <leader>gpS :Dispatch! git push --set-upstream origin $(git_current_branch)<CR>
 nnoremap <leader>gpl :Dispatch! git pull<CR>
+
+nmap <leader>gj :diffget //3<CR>
+nmap <leader>gf :diffget //2<CR>
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " FILETYPES
@@ -173,7 +178,7 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 let g:completion_enable_auto_popup = 0
 " inoremap <silent><expr> <c-p> completion#trigger_completion()
-inoremap <silent><expr> cc completion#trigger_completion()
+inoremap <silent><expr> <tab> completion#trigger_completion()
 
 let g:completion_enable_snippet = 'UltiSnips'
 " let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
@@ -182,3 +187,41 @@ let g:space_before_virtual_text = 10
 let g:diagnostic_virtual_text_prefix = '‡'
 
 lua require'nvim_lsp'.tsserver.setup{on_attach=require'on_attach'.on_attach}
+
+" And here is where I test stuff
+exec 'source ' . $HOME . "/.config/nvim/myFirstPlugin.vim"
+nnoremap <leader>pp :call MyFirstPlugin()<CR>
+
+" Terminal
+nnoremap <leader>ttt :terminal<CR>
+tnoremap <C-t> <C-\><C-n>
+
+" Maximizer
+nnoremap <leader>m :MaximizerToggle!<CR>
+
+fun! GotoWindow(id)
+    call win_gotoid(a:id)
+    MaximizerToggle
+endfun
+
+" Debugger
+nnoremap <leader>dd :call vimspector#Launch()<CR>
+nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
+nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>
+nnoremap <leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<CR>
+nnoremap <leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<CR>
+nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
+nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
+nnoremap <leader>de :call vimspector#Reset()<CR>
+
+nnoremap <leader>dtcb :call vimspector#CleanLineBreakpoint()<CR>
+
+nmap <leader>dl <Plug>VimspectorStepInto
+nmap <leader>dj <Plug>VimspectorStepOver
+nmap <leader>dk <Plug>VimspectorStepOut
+nmap <leader>d_ <Plug>VimspectorRestart
+nmap <leader>d<space> :call vimspector#Continue()<CR>
+
+nmap <leader>drc <Plug>VimspectorRunToCursor
+nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
+nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint

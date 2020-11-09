@@ -1,0 +1,28 @@
+snippet debug "Add default debug configuration" b
+{
+  "configurations": {
+    "run": {
+      "breakpoints": {
+        "exception": {
+          "all": "N",
+          "caught": "N",
+          "uncaught": "N"
+        }
+      },
+      "adapter": "vscode-node",
+      "configuration": {
+        "request": "launch",
+        "protocol": "auto",
+        "stopOnEntry": true,
+        "console": "integratedTerminal",
+        "program": "${workspaceRoot}/src/index.ts",
+        "cwd": "${workspaceRoot}",
+        "env": { "DEV": true },
+        "runtimeArgs": ["-r", "dotenv/config"],
+        "outFiles": ["${workspaceFolder}/dist/**/*.js"]
+      }
+    }
+  }
+}
+endsnippet
+
