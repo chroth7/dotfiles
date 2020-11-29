@@ -1,7 +1,6 @@
 " Plugins
 call plug#begin("~/.vim/plugged")
   Plug 'neovim/nvim-lspconfig'
-  Plug 'nvim-lua/diagnostic-nvim'
   Plug 'nvim-lua/completion-nvim'
   Plug 'prettier/vim-prettier', { 'do': 'npm install' }
   Plug 'vim-airline/vim-airline'
@@ -28,6 +27,9 @@ call plug#begin("~/.vim/plugged")
   Plug 'haya14busa/incsearch.vim'
   Plug 'puremourning/vimspector'
   Plug 'szw/vim-maximizer'
+  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+  Plug 'RishabhRD/popfix'
+  Plug 'RishabhRD/nvim-lsputils'
 call plug#end()
 
 "temporary
@@ -106,8 +108,14 @@ require('telescope').setup{
 }
 EOF
 
-nnoremap <leader>f :lua require'telescope.builtin'.git_files{}<CR>
-nnoremap \ :lua require'telescope.builtin'.live_grep{}<CR>
+nnoremap \ :lua require('telescope.builtin').live_grep{}<CR>
+nnoremap <leader>ff :lua require('telescope.builtin').git_files{}<CR>
+nnoremap <leader>fr <cmd>Telescope registers<cr>
+nnoremap <leader>ft <cmd>Telescope tags<cr>
+nnoremap <leader>fc <cmd>Telescope commands<cr>
+nnoremap <leader>fq <cmd>Telescope quickfix<cr>
+nnoremap <leader>fl <cmd>Telescope reloader<cr>
+nnoremap <leader>fk <cmd>Telescope keymaps<cr>
 nnoremap <leader>s <cmd>lua require'telescope.builtin'.lsp_references{ shorten_path = true }<CR>
 
 " Airline
@@ -129,17 +137,21 @@ augroup prettier
   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html,*.mdx Prettier
 augroup END
 
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
+" conflict
 " nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> gt   <cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> rn    <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> ac    <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> lsp    <cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>
+nnoremap <silent> ]g <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> [g <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+
 
 " fugitive git bindings
 nnoremap <leader>ga :Git add %:p<CR><CR>
@@ -186,7 +198,50 @@ let g:diagnostic_enable_virtual_text = 1
 let g:space_before_virtual_text = 10
 let g:diagnostic_virtual_text_prefix = '‡'
 
-lua require'nvim_lsp'.tsserver.setup{on_attach=require'on_attach'.on_attach}
+lua <<EOF
+require'lspconfig'.diagnosticls.setup {
+  filetypes = {"javascript", "typescript", "javascriptreact", "typescriptreact"},
+  init_options = {
+    inters = {
+      eslint = {
+        command = "./node_modules/.bin/eslint",
+        rootPatterns = {".git"},
+        debounce = 100,
+        args = {
+          "--stdin",
+          "--stdin-filename",
+          "%filepath",
+          "--format",
+          "json"
+        },
+        sourceName = "eslint",
+        parseJson = {
+          errorsRoot = "[0].messages",
+          line = "line",
+          column = "column",
+          endLine = "endLine",
+          endColumn = "endColumn",
+          message = "[eslint] ${message} [${ruleId}]",
+          security = "severity"
+        },
+        securities = {
+          [2] = "error",
+          [1] = "warning"
+        }
+      },
+      filetypes = {
+        javascript = "eslint",
+        javascriptreact = "eslint",
+        typescript = "eslint",
+        typescriptreact = "eslint",
+        ["typescript.tsx"] = "eslint",
+        ["javascript.jsx"] = "eslint"
+      }
+    }
+  }
+}
+EOF
+lua require'lspconfig'.tsserver.setup{on_attach=require'on_attach'.on_attach}
 
 " And here is where I test stuff
 exec 'source ' . $HOME . "/.config/nvim/myFirstPlugin.vim"
@@ -225,3 +280,14 @@ nmap <leader>d<space> :call vimspector#Continue()<CR>
 nmap <leader>drc <Plug>VimspectorRunToCursor
 nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
 nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
+
+lua <<EOF
+vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
+vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
+vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
+vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
+vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
+vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
+vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+EOF

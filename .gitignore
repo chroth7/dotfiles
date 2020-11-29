@@ -1,3 +1,5 @@
 *.swp
 tags
+tags.lock
+tags.temp
 .DS_Store
