@@ -1,1 +1,0 @@
-cp ./UltiSnips/* ~/.vim/UltiSnips/

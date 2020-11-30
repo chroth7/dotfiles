@@ -28,6 +28,10 @@ Note: for git, you might want to run:
 
 `cd && ln -s ./dotfiles/.tmux.conf.local .tmux.conf.local`
 
+## TMUXINATOR
+
+`cd && ln -s ./dotfiles/tmuxinator ./.config/`
+
 ## ctags
 
 `cd && ln -s ./dotfiles/.ctags .ctags
