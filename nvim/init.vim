@@ -27,7 +27,6 @@ call plug#begin("~/.vim/plugged")
   Plug 'haya14busa/incsearch.vim'
   Plug 'puremourning/vimspector'
   Plug 'szw/vim-maximizer'
-  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
   Plug 'RishabhRD/popfix'
   Plug 'RishabhRD/nvim-lsputils'
 call plug#end()
@@ -243,6 +242,7 @@ lspconfig.diagnosticls.setup {
 }
 EOF
 lua require'lspconfig'.tsserver.setup{on_attach=require'on_attach'.on_attach}
+lua require'lspconfig'.hls.setup{}
 
 " And here is where I test stuff
 exec 'source ' . $HOME . "/.config/nvim/myFirstPlugin.vim"
