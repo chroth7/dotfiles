@@ -199,9 +199,18 @@ let g:space_before_virtual_text = 10
 let g:diagnostic_virtual_text_prefix = '‡'
 
 lua <<EOF
-require'lspconfig'.diagnosticls.setup {
-  filetypes = {"javascript", "typescript", "javascriptreact", "typescriptreact"},
+local lspconfig = require'lspconfig'
+lspconfig.diagnosticls.setup {
+  filetypes = {"javascript", "typescript", "javascriptreact", "typescriptreact", "javascript.jsx", "typescript.tsx"},
   init_options = {
+    filetypes = {
+      javascript = "eslint",
+      javascriptreact = "eslint",
+      typescript = "eslint",
+      typescriptreact = "eslint",
+      ["typescript.tsx"] = "eslint",
+      ["javascript.jsx"] = "eslint"
+    },
     inters = {
       eslint = {
         command = "./node_modules/.bin/eslint",
@@ -228,14 +237,6 @@ require'lspconfig'.diagnosticls.setup {
           [2] = "error",
           [1] = "warning"
         }
-      },
-      filetypes = {
-        javascript = "eslint",
-        javascriptreact = "eslint",
-        typescript = "eslint",
-        typescriptreact = "eslint",
-        ["typescript.tsx"] = "eslint",
-        ["javascript.jsx"] = "eslint"
       }
     }
   }
