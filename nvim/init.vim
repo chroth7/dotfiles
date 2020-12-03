@@ -1,6 +1,7 @@
 " Plugins
 call plug#begin("~/.vim/plugged")
   Plug 'neovim/nvim-lspconfig'
+  Plug 'RishabhRD/nvim-lsputils'
   Plug 'nvim-lua/completion-nvim'
   Plug 'prettier/vim-prettier', { 'do': 'npm install' }
   Plug 'vim-airline/vim-airline'
@@ -28,7 +29,6 @@ call plug#begin("~/.vim/plugged")
   Plug 'puremourning/vimspector'
   Plug 'szw/vim-maximizer'
   Plug 'RishabhRD/popfix'
-  Plug 'RishabhRD/nvim-lsputils'
   Plug 'nbouscal/vim-stylish-haskell'
 call plug#end()
 
@@ -116,7 +116,6 @@ nnoremap <leader>fc <cmd>Telescope commands<cr>
 nnoremap <leader>fq <cmd>Telescope quickfix<cr>
 nnoremap <leader>fl <cmd>Telescope reloader<cr>
 nnoremap <leader>fk <cmd>Telescope keymaps<cr>
-nnoremap <leader>s <cmd>lua require'telescope.builtin'.lsp_references{ shorten_path = true }<CR>
 
 " Airline
 let g:airline_powerline_fonts = 1
@@ -137,21 +136,7 @@ augroup prettier
   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html,*.mdx Prettier
 augroup END
 
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
-" conflict
-" nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> gt   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> rn    <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> ac    <cmd>lua vim.lsp.buf.code_action()<CR>
-nnoremap <silent> <leader>lsp    <cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>
-nnoremap <silent> ]g <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent> [g <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-
+source $HOME/.config/nvim/config/lsp.vim
 
 " fugitive git bindings
 nnoremap <leader>ga :Git add %:p<CR><CR>
@@ -184,8 +169,6 @@ augroup filetype_typescriptreact
   " autocmd BufWritePre * %s/\s\+$//e
 augroup END
 
-" lsp - do that at the end
-" Install tsserver using: `:LspInstall tsserver`
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 let g:completion_enable_auto_popup = 0
@@ -197,53 +180,6 @@ let g:completion_enable_snippet = 'UltiSnips'
 let g:diagnostic_enable_virtual_text = 1
 let g:space_before_virtual_text = 10
 let g:diagnostic_virtual_text_prefix = '‡'
-
-lua <<EOF
-local lspconfig = require'lspconfig'
-lspconfig.diagnosticls.setup {
-  filetypes = {"javascript", "typescript", "javascriptreact", "typescriptreact", "javascript.jsx", "typescript.tsx"},
-  init_options = {
-    filetypes = {
-      javascript = "eslint",
-      javascriptreact = "eslint",
-      typescript = "eslint",
-      typescriptreact = "eslint",
-      ["typescript.tsx"] = "eslint",
-      ["javascript.jsx"] = "eslint"
-    },
-    inters = {
-      eslint = {
-        command = "./node_modules/.bin/eslint",
-        rootPatterns = {".git"},
-        debounce = 100,
-        args = {
-          "--stdin",
-          "--stdin-filename",
-          "%filepath",
-          "--format",
-          "json"
-        },
-        sourceName = "eslint",
-        parseJson = {
-          errorsRoot = "[0].messages",
-          line = "line",
-          column = "column",
-          endLine = "endLine",
-          endColumn = "endColumn",
-          message = "[eslint] ${message} [${ruleId}]",
-          security = "severity"
-        },
-        securities = {
-          [2] = "error",
-          [1] = "warning"
-        }
-      }
-    }
-  }
-}
-EOF
-lua require'lspconfig'.tsserver.setup{on_attach=require'on_attach'.on_attach}
-lua require'lspconfig'.hls.setup{}
 
 " And here is where I test stuff
 exec 'source ' . $HOME . "/.config/nvim/myFirstPlugin.vim"
@@ -283,13 +219,3 @@ nmap <leader>drc <Plug>VimspectorRunToCursor
 nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
 nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
-lua <<EOF
-vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
-vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
-vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
-vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
-vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
-vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
-vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
-vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
-EOF
