@@ -29,6 +29,7 @@ call plug#begin("~/.vim/plugged")
   Plug 'szw/vim-maximizer'
   Plug 'RishabhRD/popfix'
   Plug 'RishabhRD/nvim-lsputils'
+  Plug 'nbouscal/vim-stylish-haskell'
 call plug#end()
 
 "temporary
@@ -147,7 +148,7 @@ nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> rn    <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> ac    <cmd>lua vim.lsp.buf.code_action()<CR>
-nnoremap <silent> lsp    <cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>
+nnoremap <silent> <leader>lsp    <cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>
 nnoremap <silent> ]g <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <silent> [g <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 

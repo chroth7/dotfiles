@@ -45,6 +45,10 @@ Some ideas:
 
 # Lanugages
 
+## Haskell
+
+`stack install stylish-haskell`
+
 ## Scala
 
 -- Deprecated --
