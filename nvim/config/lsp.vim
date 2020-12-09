@@ -59,3 +59,5 @@ lspconfig.diagnosticls.setup {
 EOF
 lua require'lspconfig'.tsserver.setup{on_attach=require'on_attach'.on_attach}
 lua require'lspconfig'.hls.setup{}
+lua require'lspconfig'.terraformls.setup{}
+
