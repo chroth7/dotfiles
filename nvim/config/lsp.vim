@@ -58,6 +58,10 @@ lspconfig.diagnosticls.setup {
 }
 EOF
 lua require'lspconfig'.tsserver.setup{on_attach=require'on_attach'.on_attach}
-lua require'lspconfig'.hls.setup{}
-lua require'lspconfig'.terraformls.setup{}
+lua require'lspconfig'.hls.setup{on_attach=require'completion'.on_attach}
+lua require'lspconfig'.terraformls.setup{on_attach=require'completion'.on_attach}
+lua require'lspconfig'.pyls_ms.setup{on_attach=require'completion'.on_attach}
+lua require'lspconfig'.jdtls.setup{on_attach=require'completion'.on_attach}
 
+" - make sure to install kotlin_language_server in PATH
+lua require'lspconfig'.kotlin_language_server.setup{on_attach=require'completion'.on_attach}

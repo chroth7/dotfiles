@@ -65,9 +65,10 @@ if [ -f '/Users/christianroth/google-cloud-sdk/path.zsh.inc' ]; then source '/Us
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/christianroth/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/christianroth/google-cloud-sdk/completion.zsh.inc'; fi
 
-if [[ -e /usr/libexec/java_home ]]; then
-  export JAVA_HOME=`/usr/libexec/java_home`
-fi
+# if [[ -e /usr/libexec/java_home ]]; then
+#   export JAVA_HOME=`/usr/libexec/java_home`
+# fi
+export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk-15.0.1.jdk/Contents/Home'
 export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$PATH:/opt/apache-maven/bin
 

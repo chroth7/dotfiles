@@ -1,0 +1,88 @@
+snippet pipe "Basic Pipeline Skeleton" b
+package $1
+
+import org.apache.beam.sdk.Pipeline
+import org.apache.beam.sdk.io.TextIO
+import org.apache.beam.sdk.options.PipelineOptions
+import org.apache.beam.sdk.options.PipelineOptionsFactory
+import org.apache.beam.sdk.transforms.*
+import org.apache.beam.sdk.values.PCollection
+import org.apache.beam.sdk.values.KV;
+import org.apache.beam.sdk.metrics.Metrics
+import org.apache.beam.sdk.options.Default
+import org.apache.beam.sdk.options.Description
+import org.apache.beam.sdk.options.Validation.Required
+import org.apache.beam.sdk.values.PDone
+
+public object $2 {
+    public interface $2Options : PipelineOptions {
+
+        @get:Description("Path of the file to read from")
+        @get:Default.String("gs://apache-beam-samples/shakespeare/*")
+        var inputFile: String
+
+        @get:Description("Path of the file to write to")
+        @get:Required
+        var output: String
+    }
+
+    @JvmStatic
+    fun run$2(options: $2Options) {
+        val p = Pipeline.create(options)
+
+        p.apply("$3", TextIO.read().from(options.inputFile))
+                .apply($4)
+                .apply<PDone>("WriteCounts", TextIO.write().to(options.output))
+
+        p.run().waitUntilFinish()
+    }
+
+    @JvmStatic
+    fun main(args: Array<String>) {
+        val options = PipelineOptionsFactory
+          .fromArgs(*args)
+          .withValidation()
+          .`as`($2Options::class.java)
+        run$2(options)
+    }
+}
+endsnippet
+
+snippet dofn "Add DoFnSkeleton" b
+public class $1 : DoFn<$2, $3>() {
+
+  @ProcessElement
+  fun processElement(@Element element: $2, receiver: DoFn.OutputReceiver<$3>) {
+		    receiver.output(item)
+  }
+}
+endsnippet
+
+snippet dofnmetric "Add DoFnSkeleton with metric" b
+public class $1 : DoFn<$2, $3>() {
+  /* examples for metrics
+  private val emptyLines = Metrics.counter($1::class.java, "emptyLines")
+  private val lineLenDist = Metrics.distribution($1::class.java, "lineLenDistro")
+  */
+
+  @ProcessElement
+  fun processElement(@Element element: $2, receiver: DoFn.OutputReceiver<$3>) {
+    /* examples for metrics
+    lineLenDist.update(element.length.toLong())
+    if (element.trim(' ').isEmpty()) {
+      emptyLines.inc()
+    }
+    */
+
+        receiver.output(item)
+  }
+}
+endsnippet
+
+snippet pt "Add PTransform" b
+public class $1 : PTransform<PCollection<$2>, PCollection<$3>>() {
+  override fun expand(input: PCollection<$2>): PCollection<$3> {
+    return outputs
+  }
+}
+endsnippet

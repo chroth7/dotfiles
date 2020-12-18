@@ -20,3 +20,6 @@ alias -g allns=' --all-namespaces'
 # Suffix alias, will automatically exec a program
 # Use like: `something.yml` > will auto open vim for it
 alias -s {yml,yaml,json,js,ts,xml}=nvim
+
+alias pip=pip3
+alias python=python3

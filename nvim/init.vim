@@ -1,5 +1,6 @@
 " Plugins
 call plug#begin("~/.vim/plugged")
+  Plug 'udalov/kotlin-vim'
   Plug 'neovim/nvim-lspconfig'
   Plug 'RishabhRD/nvim-lsputils'
   Plug 'nvim-lua/completion-nvim'
@@ -171,7 +172,7 @@ augroup END
 
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
-let g:completion_enable_auto_popup = 0
+let g:completion_enable_auto_popup = 1
 " inoremap <silent><expr> <c-p> completion#trigger_completion()
 inoremap <silent><expr> <tab> completion#trigger_completion()
 
