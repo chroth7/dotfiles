@@ -5,4 +5,5 @@ tags.temp
 .DS_Store
 
 neovimNightly/build/**/*
+neovimNightly/src/**/*
 nvim/.netrwhist
