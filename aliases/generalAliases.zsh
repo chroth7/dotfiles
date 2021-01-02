@@ -1,7 +1,7 @@
 alias cddot="cd ~/dotfiles"
-alias dotv="nvim ~/.vimrc"
+alias dotv="v ~/.vimrc"
 alias srcv="source ~/.vimrc"
-alias dotz="nvim ~/.zshrc"
+alias dotz="v ~/.zshrc"
 alias srcz="source ~/.zshrc"
 alias v="/usr/local/bin/nnn"
 alias glcoud="gcloud"
@@ -19,7 +19,7 @@ alias -g allns=' --all-namespaces'
 
 # Suffix alias, will automatically exec a program
 # Use like: `something.yml` > will auto open vim for it
-alias -s {yml,yaml,json,js,ts,xml}=nvim
+alias -s {yml,yaml,json,js,ts,xml}=v
 
 alias pip=pip3
 alias python=python3

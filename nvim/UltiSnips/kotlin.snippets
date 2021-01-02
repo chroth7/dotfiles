@@ -14,7 +14,7 @@ import org.apache.beam.sdk.options.Description
 import org.apache.beam.sdk.options.Validation.Required
 import org.apache.beam.sdk.values.PDone
 
-public object $2 {
+public object ${2} {
     public interface $2Options : PipelineOptions {
 
         @get:Description("Path of the file to read from")
@@ -48,9 +48,14 @@ public object $2 {
 }
 endsnippet
 
-snippet dofn "Add DoFnSkeleton" b
-public class $1 : DoFn<$2, $3>() {
+snippet simple "Add SimpleFunction" b
+public class ${1} : SimpleFunction<${2}, ${3}>() {
+  override fun apply(input: $2) = ${4}
+}
+endsnippet
 
+snippet dofn "Add DoFnSkeleton" b
+public class ${1} : DoFn<${2}, ${3}>() {
   @ProcessElement
   fun processElement(@Element element: $2, receiver: DoFn.OutputReceiver<$3>) {
 		    receiver.output(item)
@@ -59,7 +64,7 @@ public class $1 : DoFn<$2, $3>() {
 endsnippet
 
 snippet dofnmetric "Add DoFnSkeleton with metric" b
-public class $1 : DoFn<$2, $3>() {
+public class ${1} : DoFn<${2}, ${3}>() {
   /* examples for metrics
   private val emptyLines = Metrics.counter($1::class.java, "emptyLines")
   private val lineLenDist = Metrics.distribution($1::class.java, "lineLenDistro")
@@ -80,7 +85,7 @@ public class $1 : DoFn<$2, $3>() {
 endsnippet
 
 snippet pt "Add PTransform" b
-public class $1 : PTransform<PCollection<$2>, PCollection<$3>>() {
+public class ${1} : PTransform<PCollection<${2}>, PCollection<${3}>>() {
   override fun expand(input: PCollection<$2>): PCollection<$3> {
     return outputs
   }
