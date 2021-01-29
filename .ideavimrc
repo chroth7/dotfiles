@@ -1,0 +1,78 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Plugins  --------------------------------
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set easymotion
+set textobj-entire
+set ReplaceWithRegister
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+""" Common settings -------------------------
+set showmode
+set so=5
+set incsearch
+set nu
+set relativenumber
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+""" Mappings --------------------------------
+map <leader>f <Plug>(easymotion-s)
+map <leader>e <Plug>(easymotion-f)
+
+map <leader>d <Action>(Debug)
+map <leader>r <Action>(RenameElement)
+map <leader>c <Action>(Stop)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+
+map <leader>s <Action>(SelectInProjectView)
+map <leader>a <Action>(Annotate)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <S-Space> <Action>(GotoNextError)
+
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>o <Action>(FileStructurePopup)
+
+""" --- My stuff
+inoremap jk <esc>
+nnoremap <leader>ww :w<CR>
+
+nnoremap <leader>tt :action SearchEverywhere<CR>
+nnoremap <leader>ff :action FindInPath<CR>
+nnoremap <leader>pp :action FileStructurePopup<CR>
+
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gb :action JumpToLastChange<CR>
+
+nnoremap gu :action FindUsages<CR>
+nnoremap gr :action RenameElement<CR>
+
+" nnoremap == :action ReformatCode<CR>
+" vnoremap == :action ReformatCode<CR>
+
+nnoremap <leader>cc :action CommentByLineComment<CR>
+vnoremap <leader>cc :action CommentByLineComment<CR>
+
+nnoremap qf :action ShowIntentionActions<CR>
+
+nnoremap ga :action GotoAction<CR>
+vnoremap ga :action GotoAction<CR>
+
+nnoremap [g :action GotoPreviousError<CR>
+nnoremap ]g :action GotoNextError<CR>
+
+nnoremap gt :action ActivateTerminalToolWindow<CR>
+nnoremap <c-h> :action NextEditorTab<CR>
+nnoremap <c-l> :action PreviousEditorTab<CR>
+

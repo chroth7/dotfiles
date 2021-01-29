@@ -73,7 +73,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$PATH:/opt/apache-maven/bin
 
 # MY OWN ALIASES
-export EDITOR=nvim
+export EDITOR=vim
 alias cow='npx -q https://gist.github.com/chroth7/5dbac65a10075027adc7ad337b340952'
 
 source ~/dotfiles/aliases/docker.zsh
@@ -88,6 +88,7 @@ source ~/dotfiles/aliases/terraform.zsh
 source ~/dotfiles/aliases/fluentd.zsh
 source ~/dotfiles/aliases/kube.zsh
 source ~/dotfiles/aliases/prettier.zsh
+source ~/dotfiles/aliases/pubsub.zsh
 
 # Global alias, expanded anywhere >> Use: ls -l G foo
 alias -g G='| grep -i'
